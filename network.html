@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Network</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <header class="bg-blue-600 text-white p-6 text-center">
+    <h1 class="text-3xl font-bold">Comprendre les Réseaux</h1>
+    <p class="text-lg mt-2">Une explication simple pour débutants</p>
+  </header>
+
+  <main class="p-8 max-w-5xl mx-auto">
+
+    <!-- Qu'est-ce qu'un réseau informatique ? -->
+    <section class="mb-4">
+      <div class="bg-white p-4 rounded-xl shadow border-l-4 border-blue-400">
+        <button onclick="document.getElementById('definition-reseau').classList.toggle('hidden');
+                   document.getElementById('arrow-def').classList.toggle('rotate-180')"
+          class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+          🔌 Qu'est-ce qu'un réseau informatique ?
+          <svg id="arrow-def" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-300"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="definition-reseau" class="text-lg text-gray-700 space-y-4 hidden">
+          <p>
+            Un <strong>réseau informatique</strong> est un ensemble d’équipements électroniques interconnectés — comme
+            des
+            ordinateurs, serveurs, routeurs, commutateurs, imprimantes et autres périphériques — qui peuvent communiquer
+            entre eux pour échanger des données et partager des ressources telles que des fichiers, des programmes ou
+            des
+            périphériques (imprimantes, disques de stockage, etc.).
+          </p>
+          <p>
+            Les réseaux informatiques jouent un rôle essentiel dans la société moderne : ils facilitent la
+            communication,
+            la collaboration, l’accès à distance aux ressources, le partage d’informations et ont profondément
+            transformé
+            les façons de travailler et d’échanger.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- À quoi servent les réseaux informatiques ? -->
+    <section class="mb-4">
+      <div class="bg-white p-4 rounded-xl shadow border-l-4 border-blue-400">
+        <button onclick="document.getElementById('reseau-usage-content').classList.toggle('hidden')"
+          class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+          🧠 À quoi servent les réseaux informatiques ?
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-300" id="arrow-icon"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="reseau-usage-content" class="text-lg text-gray-700 space-y-4 hidden">
+          <p>
+            Les réseaux informatiques servent principalement à <strong>connecter des dispositifs</strong> afin de
+            permettre :
+            <strong>le partage de fichiers</strong>, <strong>l’accès à des ressources</strong> (imprimantes, disques) et
+            <strong>l’utilisation de services en ligne</strong>.
+          </p>
+
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>📧 Messagerie électronique</strong> : Échange de messages et documents à distance.</li>
+            <li><strong>☁️ Cloud et stockage distant</strong> : Accès, sauvegarde et partage de données depuis n’importe
+              où.</li>
+            <li><strong>🎮 Jeux en ligne</strong> : Connexion de plusieurs joueurs en temps réel.</li>
+            <li><strong>📹 Visioconférence et appels vidéo</strong> : Transmission fluide de la voix et de l’image à
+              distance.</li>
+          </ul>
+
+          <p>
+            <strong>En résumé</strong>, les réseaux informatiques favorisent la <strong>connectivité</strong>,
+            la <strong>communication</strong>, la <strong>collaboration</strong> et l’<strong>accès à
+              l’information</strong>,
+            que ce soit pour un usage personnel, professionnel ou de loisir.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Les différents types de connexions réseau -->
+    <section class="mb-4">
+      <div class="bg-white p-4 rounded-xl shadow border-l-4 border-blue-400">
+        <button onclick="document.getElementById('connexion-types').classList.toggle('hidden');
+                   document.getElementById('arrow-connexion').classList.toggle('rotate-180')"
+          class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+          🌐 Les différents types de connexions réseau
+          <svg id="arrow-connexion" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-300"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="connexion-types" class="text-lg text-gray-700 space-y-3 hidden">
+          <ul class="list-disc list-inside space-y-2">
+            <li>
+              <strong>🔌 Connexion filaire (Ethernet)</strong> : utilise des câbles réseau (souvent RJ45) pour relier
+              les appareils.
+              <ul class="list-disc list-inside ml-6 mt-1 space-y-1 text-gray-600">
+                <li>Offre une <strong>vitesse élevée</strong> et une <strong>stabilité excellente</strong>.</li>
+                <li>Idéal pour les postes fixes, les serveurs, ou les usages sensibles comme les jeux en ligne.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>📶 Connexion sans fil (Wi-Fi)</strong> : permet de connecter les appareils via les ondes radio,
+              sans câble.
+              <ul class="list-disc list-inside ml-6 mt-1 space-y-1 text-gray-600">
+                <li>Très pratique pour les smartphones, tablettes, et ordinateurs portables.</li>
+                <li>Moins stable qu'une connexion filaire et peut être affectée par la distance ou les interférences.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Les différents types de réseaux -->
+    <section class="mb-4">
+      <div class="bg-white p-4 rounded-xl shadow border-l-4 border-blue-400">
+        <button onclick="document.getElementById('types-reseaux-details').classList.toggle('hidden');
+                   document.getElementById('arrow-reseaux-details').classList.toggle('rotate-180')"
+          class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+          📡 Les différents types de réseaux
+          <svg id="arrow-reseaux-details" xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="types-reseaux-details" class="text-lg text-gray-700 space-y-4 hidden">
+          <p>Les réseaux informatiques se déclinent en plusieurs catégories selon leur portée, leur technologie et leur
+            usage. Voici les principaux types de réseaux :</p>
+
+          <div>
+            <strong>1. LAN (Local Area Network) - Réseau local</strong>
+            <p>Un LAN relie des ordinateurs et des périphériques sur une zone géographique restreinte, comme une maison,
+              une salle de classe, un bureau ou un bâtiment.</p>
+            <ul class="list-disc list-inside ml-4">
+              <li>Les ordinateurs d’une salle informatique connectés pour partager une imprimante ou des fichiers.</li>
+              <li>Le réseau domestique qui relie vos appareils à votre box Internet.</li>
+            </ul>
+          </div>
+
+          <div>
+            <strong>2. WAN (Wide Area Network) - Réseau étendu</strong>
+            <p>Un WAN couvre de vastes zones géographiques, allant de plusieurs villes à des pays ou continents entiers.
+              Internet est le plus grand exemple de WAN.</p>
+            <ul class="list-disc list-inside ml-4">
+              <li>Le réseau reliant les succursales d’une entreprise internationale.</li>
+              <li>Les connexions entre différents centres de données à travers le monde.</li>
+            </ul>
+          </div>
+
+          <div>
+            <strong>3. MAN (Metropolitan Area Network) - Réseau métropolitain</strong>
+            <p>Un MAN connecte plusieurs LAN dans une même ville ou une agglomération.</p>
+            <ul class="list-disc list-inside ml-4">
+              <li>Le réseau informatique d’une université répartie sur plusieurs campus.</li>
+              <li>Le réseau d’une mairie connectant ses différents bâtiments municipaux.</li>
+            </ul>
+          </div>
+
+          <div>
+            <strong>4. WLAN (Wireless LAN) - Réseau local sans fil</strong>
+            <p>Un WLAN est un réseau local utilisant le Wi-Fi pour connecter les appareils.</p>
+            <ul class="list-disc list-inside ml-4">
+              <li>Le Wi-Fi dans une maison, un café ou une bibliothèque.</li>
+              <li>Les réseaux sans fil dans les écoles pour les tablettes des élèves.</li>
+            </ul>
+          </div>
+
+          <div>
+            <strong>5. VPN (Virtual Private Network) - Réseau privé virtuel</strong>
+            <p>Un VPN crée un tunnel sécurisé à travers Internet, permettant de protéger ses données et d’accéder à
+              distance à un réseau privé.</p>
+            <ul class="list-disc list-inside ml-4">
+              <li>Un employé accédant au réseau de son entreprise depuis chez lui en toute sécurité.</li>
+              <li>Un internaute protégeant sa connexion sur un Wi-Fi public grâce à un VPN.</li>
+            </ul>
+          </div>
+
+          <p><strong>En résumé :</strong> Chaque type de réseau répond à des besoins spécifiques : maison, entreprise,
+            sécurité… Les connaître permet de mieux choisir et sécuriser ses connexions au quotidien !</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Principaux protocoles de communication sur un réseau informatique -->
+    <section class="mb-4">
+      <div class="bg-white p-4 rounded-xl shadow border-l-4 border-blue-400">
+        <button onclick="document.getElementById('protocoles-details').classList.toggle('hidden');
+                   document.getElementById('arrow-protocoles').classList.toggle('rotate-180')"
+          class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+          📡 Principaux protocoles de communication sur un réseau informatique
+          <svg id="arrow-protocoles" xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="protocoles-details" class="text-lg text-gray-700 space-y-6 hidden">
+          <!-- Protocoles de base -->
+          <div>
+            <h3 class="text-xl font-semibold text-blue-800 mb-2">⚙️ Protocoles de base</h3>
+            <ul class="list-disc list-inside space-y-1">
+              <li><strong>IP (Internet Protocol)</strong> : Adressage et routage des paquets de données.</li>
+              <li><strong>TCP (Transmission Control Protocol)</strong> : Transmission fiable et ordonnée des données.
+              </li>
+              <li><strong>UDP (User Datagram Protocol)</strong> : Transmission rapide sans garantie, utilisé pour le
+                streaming ou les jeux en ligne.</li>
+              <li><strong>ICMP (Internet Control Message Protocol)</strong> : Gestion des erreurs et diagnostic réseau
+                (ex. <code>ping</code>).</li>
+            </ul>
+          </div>
+
+          <!-- Protocoles applicatifs -->
+          <div>
+            <h3 class="text-xl font-semibold text-blue-800 mb-2">🌐 Protocoles applicatifs</h3>
+            <ul class="list-disc list-inside space-y-1">
+              <li><strong>HTTP</strong> : Protocole de base pour la navigation web.</li>
+              <li><strong>HTTPS</strong> : Version sécurisée de HTTP avec chiffrement TLS/SSL.</li>
+              <li><strong>FTP</strong> : Transfert de fichiers entre ordinateurs.</li>
+              <li><strong>SMTP</strong> : Envoi d’e-mails.</li>
+              <li><strong>POP / IMAP</strong> : Récupération des e-mails depuis un serveur.</li>
+            </ul>
+          </div>
+
+          <!-- Protocoles de gestion -->
+          <div>
+            <h3 class="text-xl font-semibold text-blue-800 mb-2">🛠️ Protocoles de gestion et de résolution</h3>
+            <ul class="list-disc list-inside space-y-1">
+              <li><strong>ARP</strong> : Correspondance entre adresse IP et adresse MAC.</li>
+              <li><strong>DNS</strong> : Traduction des noms de domaine en adresses IP.</li>
+              <li><strong>DHCP</strong> : Attribution automatique des adresses IP sur un réseau.</li>
+            </ul>
+          </div>
+
+          <!-- Protocoles de sécurité -->
+          <div>
+            <h3 class="text-xl font-semibold text-blue-800 mb-2">🔐 Protocoles de sécurité et d’administration</h3>
+            <ul class="list-disc list-inside space-y-1">
+              <li><strong>TLS / SSL</strong> : Chiffrement des communications (notamment avec HTTPS).</li>
+              <li><strong>SNMP</strong> : Surveillance et gestion des équipements réseau.</li>
+              <li><strong>Telnet</strong> : Accès distant via ligne de commande (non sécurisé).</li>
+            </ul>
+          </div>
+
+          <!-- Protocoles de routage -->
+          <div>
+            <h3 class="text-xl font-semibold text-blue-800 mb-2">🧭 Protocoles de routage</h3>
+            <ul class="list-disc list-inside space-y-1">
+              <li><strong>BGP</strong> : Routage entre grands réseaux (Internet).</li>
+              <li><strong>OSPF</strong> : Routage dynamique à l’intérieur d’un réseau.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!--Le modèle OSI & l'encapsulation -->
+    <section class="mb-4">
+      <div class="bg-white p-4 rounded-xl shadow border-l-4 border-blue-400">
+        <button onclick="document.getElementById('osi-global').classList.toggle('hidden');
+                   document.getElementById('arrow-osi').classList.toggle('rotate-180')"
+          class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+          🧱 Le modèle OSI & l'encapsulation
+          <svg id="arrow-osi" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-300"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="osi-global" class="hidden mt-6 space-y-6 text-lg">
+
+          <!-- Sous-section : modèle OSI -->
+          <div class="bg-white p-5 rounded-xl shadow border-l-4 border-blue-300">
+            <button onclick="document.getElementById('osi-details').classList.toggle('hidden');
+                       document.getElementById('arrow-osi-couches').classList.toggle('rotate-180')"
+              class="w-full flex justify-between items-center text-xl font-semibold text-blue-700 mb-2">
+              📶 Le modèle OSI
+              <svg id="arrow-osi-couches" xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <div id="osi-details" class="hidden space-y-4 text-gray-700">
+
+              <p>
+                Le <strong>modèle OSI</strong> (<em>Open Systems Interconnection</em>) est un cadre conceptuel qui
+                <strong>divise la communication réseau en 7 couches</strong>, chacune ayant un rôle précis dans le
+                transfert des données.
+              </p>
+
+              <p>
+                Cette structure permet aux différents <strong>appareils et logiciels de marques différentes de bien
+                  fonctionner ensemble</strong>, tout en rendant plus facile la <strong>détection et la résolution des
+                  problèmes réseau</strong>.
+              </p>
+
+              <p>
+                Chaque couche communique uniquement avec <strong>la couche située juste au-dessus et juste en
+                  dessous</strong>, ce qui rend le modèle <strong>modulaire, flexible et facile à faire
+                  évoluer</strong>.
+              </p>
+
+
+              <details class="bg-gray-50 p-4 rounded shadow">
+                <summary class="cursor-pointer font-bold">7️⃣ Couche application : Interface directe avec les
+                  applications utilisateur (HTTP, SMTP, etc.) </summary>
+                <div class="mt-2 space-y-2">
+                  <p>Interface utilisateur pour accéder aux services réseau.</p>
+                  <p><strong>Exemples :</strong> HTTP, FTP, DNS, POP3, SMTP, IMAP</p>
+                </div>
+              </details>
+              <details class="bg-gray-50 p-4 rounded shadow">
+                <summary class="cursor-pointer font-bold">6️⃣ Couche présentation : Gère le formatage, le chiffrement et
+                  la compression des données </summary>
+                <div class="mt-2 space-y-2">
+                  <p>Formatage, chiffrement et compression des données.</p>
+                  <p><strong>Exemples :</strong> SSL/TLS, Unicode, MIME, JPEG, MP3, MPEG</p>
+                </div>
+              </details>
+              <details class="bg-gray-50 p-4 rounded shadow">
+                <summary class="cursor-pointer font-bold">5️⃣ Couche session : Établit, gère et termine les sessions de
+                  communication entre deux machines, ou entre applications </summary>
+                <div class="mt-2 space-y-2">
+                  <p>Gestion des connexions (ouverture, maintien, fermeture).</p>
+                  <p><strong>Exemples :</strong> SSH, SQL, NFS, RPC</p>
+                </div>
+              </details>
+              <details class="bg-gray-50 p-4 rounded shadow">
+                <summary class="cursor-pointer font-bold">4️⃣ Couche transport : Transmission fiable (TCP) ou rapide
+                  (UDP) des données, segmentation et réassemblage</summary>
+                <div class="mt-2 space-y-2">
+                  <p>Contrôle de la transmission (fiabilité, ordre).</p>
+                  <p><strong>Exemples :</strong> TCP, UDP</p>
+                </div>
+              </details>
+              <details class="bg-gray-50 p-4 rounded shadow">
+                <summary class="cursor-pointer font-bold">3️⃣ Couche réseau : Acheminement des paquets entre réseaux
+                  différents, adressage IP, routage
+                </summary>
+                <div class="mt-2 space-y-2">
+                  <p>Routage entre les réseaux.</p>
+                  <p><strong>Exemples :</strong> IP, ICMP, BGP, IPSec</p>
+                </div>
+              </details>
+              <details class="bg-gray-50 p-4 rounded shadow">
+                <summary class="cursor-pointer font-bold">2️⃣ Couche liaison de données : Gère la transmission des
+                  trames entre deux appareils sur le même réseau, l’adressage MAC et la détection/correction d’erreurs
+                </summary>
+                <div class="mt-2 space-y-2">
+                  <p>Communication entre deux machines sur un même réseau.</p>
+                  <p><strong>Exemples :</strong> Ethernet (802.3), Wifi (802.11)</p>
+                </div>
+              </details>
+              <details class="bg-gray-50 p-4 rounded shadow">
+                <summary class="cursor-pointer font-bold">1️⃣ Couche physique : Transmet les bits bruts via le support
+                  physique (câbles, signaux électriques, etc.)</summary>
+                <div class="mt-2 space-y-2">
+                  <p>Transmission des bits sur un support physique.</p>
+                  <p><strong>Exemples :</strong> RJ45, fibre, ondes</p>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <!-- Sous-section : Encapsulation -->
+          <div class="bg-white p-5 rounded-xl shadow border-l-4 border-blue-300">
+            <button onclick="document.getElementById('encapsulation-details').classList.toggle('hidden');
+                       document.getElementById('arrow-encapsulation').classList.toggle('rotate-180')"
+              class="w-full flex justify-between items-center text-xl font-semibold text-blue-700 mb-2">
+              📦 L'encapsulation des données
+              <svg id="arrow-encapsulation" xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <div id="encapsulation-details" class="hidden space-y-3 text-gray-700">
+
+
+              <!-- Description -->
+              <p>
+                L’encapsulation est un principe essentiel du modèle OSI.<br>
+                Quand une application <strong>crée des données</strong> à envoyer sur le réseau, ces données passent par
+                les différentes couches du <strong>modèle OSI</strong>.
+                À chaque passage dans une couche plus basse, la couche <strong>ajoute ses propres informations</strong>
+                — qu’on appelle des <strong>en-têtes</strong> (et parfois des <strong>pieds de page</strong>).
+              </p>
+
+              <p>
+                Le tout — c’est-à-dire les données que l’on veut vraiment envoyer (comme un texte ou une image) et les
+                informations ajoutées pour les transporter correctement — forme ce qu’on appelle une <strong>unité de
+                  données de protocole (PDU)</strong>.
+              </p>
+
+              <p>
+                Une <strong>PDU</strong> est donc un <strong>bloc de données structuré</strong> contenant :
+              </p>
+
+              <ul class="list-disc list-inside ml-6 text-gray-700">
+                <li>Les <strong>données à transmettre</strong> (ex : un message, une vidéo, un fichier…)</li>
+                <li>Les <strong>informations techniques</strong> nécessaires pour bien envoyer, recevoir et comprendre
+                  ces données</li>
+              </ul>
+
+              <p>
+                Chaque couche du modèle OSI utilise <strong>son propre type de PDU</strong>. Cela permet aux
+                équipements, même s’ils sont différents, de <strong>communiquer efficacement</strong> et de suivre les
+                mêmes règles pour transmettre les données.
+              </p>
+
+
+              <!-- Exemple -->
+              <p>
+                <strong>Exemple :</strong> un message <code><strong>HTTP</strong></code> (couche
+                <strong>Application</strong>) est encapsulé dans un
+                <code><strong>segment TCP</strong></code> (couche <strong>Transport</strong>), qui est encapsulé dans un
+                <code><strong>paquet IP</strong></code> (couche <strong>Réseau</strong>),
+                puis dans une <code><strong>trame Ethernet</strong></code> (couche <strong>Liaison de données</strong>),
+                et enfin transmis sous forme de <strong>bits</strong> (couche <strong>Physique</strong>).
+              </p>
+
+              <p>
+                À la réception, le processus est inversé : chaque couche retire son en-tête
+                (<strong>décapsulation</strong>) pour transmettre la donnée à la couche supérieure,
+                jusqu’à l’<strong>application finale</strong>.
+              </p>
+
+              <section class="mb-10">
+                <h2 class="text-2xl font-bold text-blue-700 mb-4">📦 PDUs et en-têtes associés aux 7 couches du modèle
+                  OSI</h2>
+
+                <div class="overflow-x-auto">
+                  <table
+                    class="min-w-full table-auto border-collapse border border-gray-300 text-left text-lg text-gray-800">
+                    <thead class="bg-blue-100">
+                      <tr>
+                        <th class="border border-gray-300 px-4 py-2">Couche OSI</th>
+                        <th class="border border-gray-300 px-4 py-2">Type de PDU</th>
+                        <th class="border border-gray-300 px-4 py-2">Rôle de la couche</th>
+                        <th class="border border-gray-300 px-4 py-2">Exemples d’en-têtes ajoutés</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="border border-gray-300 px-4 py-2">7️⃣ Application</td>
+                        <td class="border border-gray-300 px-4 py-2">Données</td>
+                        <td class="border border-gray-300 px-4 py-2">Fournit une interface aux applications utilisateur
+                          pour utiliser les services réseau.</td>
+                        <td class="border border-gray-300 px-4 py-2">HTTP, SMTP, FTP</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-300 px-4 py-2">6️⃣ Présentation</td>
+                        <td class="border border-gray-300 px-4 py-2">Données</td>
+                        <td class="border border-gray-300 px-4 py-2">Assure le formatage, l'encodage, le chiffrement ou
+                          la compression des données.</td>
+                        <td class="border border-gray-300 px-4 py-2">SSL/TLS, encodage UTF-8</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-300 px-4 py-2">5️⃣ Session</td>
+                        <td class="border border-gray-300 px-4 py-2">Données</td>
+                        <td class="border border-gray-300 px-4 py-2">Établit, maintient et termine les sessions de
+                          communication entre applications.</td>
+                        <td class="border border-gray-300 px-4 py-2">Session NetBIOS, gestion de session SQL</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-300 px-4 py-2">4️⃣ Transport</td>
+                        <td class="border border-gray-300 px-4 py-2">Segment (TCP) / Datagramme (UDP)</td>
+                        <td class="border border-gray-300 px-4 py-2">Garantit une transmission fiable (TCP) ou rapide
+                          (UDP), avec contrôle de flux et des ports.</td>
+                        <td class="border border-gray-300 px-4 py-2">Ports TCP/UDP, numéros de séquence, accusés de
+                          réception</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-300 px-4 py-2">3️⃣ Réseau</td>
+                        <td class="border border-gray-300 px-4 py-2">Paquet</td>
+                        <td class="border border-gray-300 px-4 py-2">Routage des paquets entre réseaux, adressage
+                          logique (IP).</td>
+                        <td class="border border-gray-300 px-4 py-2">Adresse IP source/destination, TTL</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-300 px-4 py-2">2️⃣ Liaison de données</td>
+                        <td class="border border-gray-300 px-4 py-2">Trame</td>
+                        <td class="border border-gray-300 px-4 py-2">Transfert entre machines d’un même réseau physique,
+                          détection d'erreurs.</td>
+                        <td class="border border-gray-300 px-4 py-2">Adresse MAC, FCS (contrôle d’erreurs)</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-300 px-4 py-2">1️⃣ Physique</td>
+                        <td class="border border-gray-300 px-4 py-2">Bits</td>
+                        <td class="border border-gray-300 px-4 py-2">Transmission des données sous forme de signaux
+                          électriques, optiques ou radio.</td>
+                        <td class="border border-gray-300 px-4 py-2">Signal électrique, impulsions, modulation</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="text-gray-700 mt-6">
+                  <strong>🔁 Résumé :</strong> Chaque couche du modèle OSI encapsule les données avec des informations
+                  propres à son rôle.
+                  Cela forme une chaîne de PDU, de la couche application jusqu'à la couche physique, assurant une
+                  <strong>transmission organisée, fiable et compatible</strong> des données.
+                </p>
+              </section>
+
+
+
+
+
+              <div class="bg-gray-100 p-4 rounded text-center">
+                <h4 class="text-blue-700 font-semibold mb-1">🎓 Astuce pour retenir les 7 couches</h4>
+                <p class="italic text-gray-600">
+                  "All People Seem To Need Data Processing"<br />
+                  <strong>Application, Présentation, Session, Transport, Network, Data Link, Physical</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Le modèle TCP/IP -->
+    <section class="mb-4">
+      <div class="bg-white p-4 rounded-xl shadow border-l-4 border-blue-400">
+        <button onclick="document.getElementById('model-tcpip').classList.toggle('hidden');
+                         document.getElementById('arrow-tcpip').classList.toggle('rotate-180')"
+          class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+          🌐 Le modèle TCP/IP : Le modèle de référence d’Internet
+          <svg id="arrow-tcpip" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-300"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="model-tcpip" class="text-lg text-gray-700 space-y-4 hidden">
+          <button onclick="document.getElementById('general-presentation').classList.toggle('hidden');
+                         document.getElementById('arrow-general').classList.toggle('rotate-180')"
+            class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+            🔍 Présentation générale
+            <svg id="arrow-general" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-300"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div id="general-presentation" class="text-lg text-gray-700 space-y-2 hidden">
+            <p>
+              Le <strong>modèle TCP/IP</strong> est un ensemble de protocoles standardisés qui permet aux ordinateurs de
+              <strong>communiquer sur Internet</strong> et sur la plupart des réseaux modernes.
+            </p>
+            <p>
+              Il repose sur une <strong>architecture en 4 couches</strong>, chacune remplissant un rôle précis dans la
+              transmission des données.
+            </p>
+            <p>
+              Ce modèle est <strong>plus simple</strong> que le modèle OSI car il regroupe certaines fonctions
+              et repose sur des protocoles largement utilisés en pratique.
+            </p>
+          </div>
+
+          <button onclick="document.getElementById('app-layer').classList.toggle('hidden');
+                         document.getElementById('arrow-app').classList.toggle('rotate-180')"
+            class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+            📤 1. Couche Application
+            <svg id="arrow-app" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-300"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div id="app-layer" class="text-lg text-gray-700 space-y-2 hidden">
+            <p>
+              Cette couche regroupe tous les <strong>protocoles utilisés directement par les applications</strong>,
+              comme :
+            </p>
+            <ul class="list-disc list-inside ml-6">
+              <li><strong>HTTP</strong> – pour le web</li>
+              <li><strong>FTP</strong> – pour le transfert de fichiers</li>
+              <li><strong>SMTP</strong> – pour l’email</li>
+              <li><strong>DNS</strong> – pour la résolution de noms de domaine</li>
+            </ul>
+            <p>
+              Elle correspond aux <strong>couches Application, Présentation et Session</strong> du modèle OSI.
+            </p>
+          </div>
+
+          <button onclick="document.getElementById('transport-layer').classList.toggle('hidden');
+                         document.getElementById('arrow-transport').classList.toggle('rotate-180')"
+            class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+            🚚 2. Couche Transport
+            <svg id="arrow-transport" xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div id="transport-layer" class="text-lg text-gray-700 space-y-2 hidden">
+            <p>Elle gère la <strong>transmission fiable ou rapide</strong> des données entre les machines.</p>
+            <ul class="list-disc list-inside ml-6">
+              <li><strong>TCP (Transmission Control Protocol)</strong> – fiable, ordonné, sans perte</li>
+              <li><strong>UDP (User Datagram Protocol)</strong> – rapide, sans garantie de livraison</li>
+            </ul>
+          </div>
+
+          <button onclick="document.getElementById('internet-layer').classList.toggle('hidden');
+                         document.getElementById('arrow-internet').classList.toggle('rotate-180')"
+            class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+            🛰️ 3. Couche Internet
+            <svg id="arrow-internet" xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div id="internet-layer" class="text-lg text-gray-700 space-y-2 hidden">
+            <p>
+              Elle s’occupe de l’<strong>adressage logique</strong> et du <strong>routage</strong> des paquets à travers
+              différents réseaux.
+            </p>
+            <p>Principaux protocoles :</p>
+            <ul class="list-disc list-inside ml-6">
+              <li><strong>IP (Internet Protocol)</strong></li>
+              <li><strong>ICMP (Internet Control Message Protocol)</strong></li>
+              <li><strong>IPSec (Internet Protocol Security)</strong></li>
+            </ul>
+          </div>
+
+          <button onclick="document.getElementById('network-access-layer').classList.toggle('hidden');
+                         document.getElementById('arrow-network').classList.toggle('rotate-180')"
+            class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+            📡 4. Couche Accès Réseau
+            <svg id="arrow-network" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-300"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div id="network-access-layer" class="text-lg text-gray-700 space-y-2 hidden">
+            <p>
+              Cette couche correspond aux couches <strong>Physique</strong> et <strong>Liaison de données</strong> du
+              modèle OSI.
+              Elle gère la <strong>transmission des données</strong> sur le <strong>support physique</strong>.
+            </p>
+            <p>Exemples : <strong>Ethernet, Wi-Fi</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- DHCP -->
+    <section class="mb-4">
+      <div class="bg-white p-4 rounded-xl shadow border-l-4 border-blue-400">
+
+        <button onclick="document.getElementById('dhcp-section').classList.toggle('hidden');
+                         document.getElementById('arrow-dhcp').classList.toggle('rotate-180')"
+          class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+          🛠️ DHCP : Le protocole d’attribution automatique des adresses IP
+          <svg id="arrow-dhcp" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-300"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="dhcp-section" class="text-lg text-gray-700 space-y-4 hidden">
+          <button onclick="document.getElementById('dhcp-overview').classList.toggle('hidden');
+                         document.getElementById('arrow-overview').classList.toggle('rotate-180')"
+            class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+            🔍 Vue d'ensemble du DHCP
+            <svg id="arrow-overview" xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div id="dhcp-overview" class="text-lg text-gray-700 space-y-2 hidden">
+            <p>
+              Le <strong>DHCP (Dynamic Host Configuration Protocol)</strong> est un protocole essentiel du modèle
+              TCP/IP,
+              utilisé pour attribuer automatiquement les paramètres réseau aux appareils connectés.
+            </p>
+            <p>
+              Ce protocole facilite l'attribution dynamique des adresses IP, évitant les conflits et la configuration
+              manuelle.
+            </p>
+          </div>
+
+          <button onclick="document.getElementById('dhcp-functioning').classList.toggle('hidden');
+                         document.getElementById('arrow-functioning').classList.toggle('rotate-180')"
+            class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+            ⚙️ Fonctionnement du DHCP (Séquence DORA)
+            <svg id="arrow-functioning" xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div id="dhcp-functioning" class="text-lg text-gray-700 space-y-2 hidden">
+            <p>Le fonctionnement du DHCP suit une séquence de 4 étapes appelées <strong>DORA</strong> :</p>
+            <ul class="list-disc list-inside ml-6">
+              <li><strong>Discover</strong> : L’appareil envoie une requête de découverte (broadcast) pour trouver un
+                serveur DHCP.</li>
+              <li><strong>Offer</strong> : Le serveur DHCP répond avec une offre d’adresse IP et des paramètres réseau.
+              </li>
+              <li><strong>Request</strong> : L’appareil accepte l’offre en envoyant une requête de confirmation.</li>
+              <li><strong>Acknowledge</strong> : Le serveur confirme l’attribution et l’appareil peut utiliser l’adresse
+                IP fournie.</li>
+            </ul>
+
+            <p class="text-lg mt-4 mb-4">Voici un exemple de ce que l’on peut observer dans un fichier de capture réseau
+              (.pcap)
+              avec l’outil <code class="bg-gray-200 px-1 rounded text-sm">tshark</code>. Ce tableau illustre le
+              processus
+              DORA
+              : de la demande initiale à l'attribution de l'adresse IP.</p>
+
+            <div class="overflow-auto">
+              <table class="min-w-full bg-white rounded shadow text-left text-sm">
+                <thead class="bg-blue-100 text-gray-800">
+                  <tr>
+                    <th class="p-3">Frame</th>
+                    <th class="p-3">Info</th>
+                    <th class="p-3">MAC Source</th>
+                    <th class="p-3">MAC Dest</th>
+                    <th class="p-3">IP Source</th>
+                    <th class="p-3">IP Dest</th>
+                    <th class="p-3">IP Assignée</th>
+                    <th class="p-3">Type DHCP</th>
+                  </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                  <tr class="border-t">
+                    <td class="p-3">15</td>
+                    <td class="p-3">DHCP Discover</td>
+                    <td class="p-3">00:11:22:33:44:55</td>
+                    <td class="p-3">ff:ff:ff:ff:ff:ff</td>
+                    <td class="p-3">0.0.0.0</td>
+                    <td class="p-3">255.255.255.255</td>
+                    <td class="p-3">—</td>
+                    <td class="p-3">Discover</td>
+                  </tr>
+                  <tr class="border-t">
+                    <td class="p-3">16</td>
+                    <td class="p-3">DHCP Offer</td>
+                    <td class="p-3">66:77:88:99:aa:bb</td>
+                    <td class="p-3">00:11:22:33:44:55</td>
+                    <td class="p-3">192.168.1.1</td>
+                    <td class="p-3">255.255.255.255</td>
+                    <td class="p-3">192.168.1.100</td>
+                    <td class="p-3">Offer</td>
+                  </tr>
+                  <tr class="border-t">
+                    <td class="p-3">17</td>
+                    <td class="p-3">DHCP Request</td>
+                    <td class="p-3">00:11:22:33:44:55</td>
+                    <td class="p-3">ff:ff:ff:ff:ff:ff</td>
+                    <td class="p-3">0.0.0.0</td>
+                    <td class="p-3">255.255.255.255</td>
+                    <td class="p-3">—</td>
+                    <td class="p-3">Request</td>
+                  </tr>
+                  <tr class="border-t">
+                    <td class="p-3">18</td>
+                    <td class="p-3">DHCP ACK</td>
+                    <td class="p-3">66:77:88:99:aa:bb</td>
+                    <td class="p-3">00:11:22:33:44:55</td>
+                    <td class="p-3">192.168.1.1</td>
+                    <td class="p-3">255.255.255.255</td>
+                    <td class="p-3">192.168.1.100</td>
+                    <td class="p-3">ACK</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="text-lg mt-6 space-y-2">
+              <p>🔍 <strong>Ce que tu vois :</strong></p>
+              <ul class="list-disc list-inside">
+                <li>Le client (<code class="bg-gray-100 px-1 rounded text-sm">00:11:22:33:44:55</code>) n’a pas
+                  d’adresse
+                  IP
+                  au départ (<code>0.0.0.0</code>), il envoie un message <strong>Discover</strong>.</li>
+                <li>Le serveur (<code class="bg-gray-100 px-1 rounded text-sm">66:77:88:99:aa:bb</code>) répond avec une
+                  IP
+                  disponible : <strong>192.168.1.100</strong>.</li>
+                <li>Le client envoie un <strong>Request</strong> pour accepter l’IP proposée.</li>
+                <li>Le serveur répond avec un <strong>ACK</strong> pour confirmer l’attribution.</li>
+              </ul>
+            </div>
+
+          </div>
+
+          <button onclick="document.getElementById('dhcp-benefits').classList.toggle('hidden');
+                         document.getElementById('arrow-benefits').classList.toggle('rotate-180')"
+            class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+            🌟 Avantages du DHCP
+            <svg id="arrow-benefits" xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div id="dhcp-benefits" class="text-lg text-gray-700 space-y-2 hidden">
+            <p>
+              Le DHCP présente plusieurs avantages importants pour les réseaux informatiques :
+            </p>
+            <ul class="list-disc list-inside ml-6">
+              <li><strong>Attribution automatique des adresses IP</strong> – élimine la configuration manuelle et réduit
+                les erreurs humaines.</li>
+              <li><strong>Éviter les conflits d'adresses</strong> – assure qu'aucun appareil n'a deux fois la même
+                adresse IP.</li>
+              <li><strong>Gestion centralisée</strong> – simplifie la gestion des paramètres réseau sur l'ensemble du
+                réseau.</li>
+              <li><strong>Réservations d'adresses</strong> – possibilité de réserver des adresses IP pour des
+                équipements spécifiques (ex. : imprimantes, serveurs).</li>
+            </ul>
+          </div>
+
+
+        </div>
+      </div>
+
+
+
+    </section>
+
+
+    <!-- ARP -->
+    <section class="mb-4">
+      <div class="bg-white p-4 rounded-xl shadow border-l-4 border-blue-400">
+        <button onclick="document.getElementById('section-arp-def').classList.toggle('hidden');
+                         document.getElementById('arrow-arp-def').classList.toggle('rotate-180')"
+          class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+          🧠 ARP : Le protocole réseau utilisé pour retrouver l’adresse MAC
+          <svg id="arrow-arp-def" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-300"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="section-arp-def" class="text-lg text-gray-800 space-y-4 hidden">
+          <p>
+            Le protocole <strong>ARP (Address Resolution Protocol)</strong> est un protocole réseau fondamental utilisé
+            pour faire la correspondance entre une <strong>adresse IP</strong> (couche réseau, couche 3 du modèle OSI)
+            et une <strong>adresse MAC</strong> (couche liaison de données, couche 2), indispensable pour la
+            communication sur un réseau local Ethernet.
+          </p>
+
+          <h3 class="font-semibold text-xl text-blue-700 mt-4">🎯 À quoi sert ARP ?</h3>
+          <p>
+            Lorsqu'un ordinateur souhaite envoyer des données à un autre appareil du même réseau local, il connaît
+            généralement son <strong>adresse IP</strong> mais pas son <strong>adresse MAC</strong>. Or, pour transmettre
+            une trame Ethernet, il a besoin de l'adresse MAC du destinataire. C'est là qu'intervient
+            <strong>ARP</strong> : il permet de découvrir dynamiquement l'adresse MAC correspondant à une adresse IP
+            donnée.
+          </p>
+
+          <h3 class="font-semibold text-xl text-blue-700 mt-4">⚙️ Fonctionnement du protocole ARP</h3>
+          <ul class="list-disc list-inside ml-6 space-y-1">
+            <li><strong>Requête ARP (broadcast)</strong> : L'appareil source envoie une requête ARP à tous les appareils
+              du réseau local (broadcast), demandant "Qui a l'adresse IP X ?".</li>
+            <li><strong>Réponse ARP (unicast)</strong> : L'appareil qui possède l'adresse IP concernée répond en
+              envoyant sa propre adresse MAC à l'émetteur.</li>
+            <li><strong>Mise en cache</strong> : L'association IP/MAC est enregistrée dans une <strong>table
+                ARP</strong> sur l'appareil source pour accélérer les communications futures et éviter de refaire une
+              requête à chaque fois.</li>
+          </ul>
+
+          <h3 class="font-semibold text-xl text-blue-700 mt-4">🚀 Importance d'ARP</h3>
+          <ul class="list-disc list-inside ml-6 space-y-1">
+            <li><strong>Indispensable pour IPv4 sur Ethernet</strong> : Sans ARP, il serait impossible de transmettre
+              des données entre appareils sur un réseau local, car les adresses IP ne suffisent pas pour l'acheminement
+              des trames Ethernet.</li>
+            <li><strong>Optimisation des échanges</strong> : Le cache ARP permet de limiter le nombre de requêtes,
+              améliorant ainsi la performance du réseau.</li>
+          </ul>
+
+          <h3 class="font-semibold text-xl text-blue-700 mt-4">🔄 Limites et évolution</h3>
+          <p>
+            En <strong>IPv6</strong>, ARP est remplacé par le protocole <strong>NDP (Neighbor Discovery
+              Protocol)</strong>, qui remplit des fonctions similaires.
+          </p>
+
+          <div class="bg-gray-100 border-l-4 border-green-300 p-4 rounded-xl shadow">
+            <p><strong>En résumé</strong> : ARP est le protocole qui permet à un appareil de trouver l’adresse MAC
+              correspondant à une adresse IP sur un réseau local, rendant possible la transmission de données sur
+              Ethernet et assurant la fluidité des communications sur les réseaux IP.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ICMP -->
+    <section class="mb-4">
+      <div class="bg-white p-4 rounded-xl shadow border-l-4 border-blue-400">
+        <button onclick="document.getElementById('icmp-content').classList.toggle('hidden');
+                         document.getElementById('arrow-icmp').classList.toggle('rotate-180')"
+          class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+          🛰️ ICMP : Le protocole de diagnostic et de signalement des erreurs réseau
+          <svg id="arrow-icmp" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-300"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="icmp-content" class="text-lg text-gray-800 space-y-4 hidden">
+          <p><strong>ICMP</strong> (<em>Internet Control Message Protocol</em>) est un protocole de la <strong>couche 3
+              (réseau)</strong> du modèle OSI.</p>
+          <p>Il est utilisé pour le <strong>diagnostic</strong>, le <strong>contrôle</strong> et le <strong>signalement
+              d’erreurs</strong> dans les communications IP.</p>
+
+          <ul class="list-disc list-inside ml-6 space-y-2">
+            <li>❌ ICMP ne transporte pas de données applicatives.</li>
+            <li>📦 Il encapsule ses messages dans des paquets IP.</li>
+            <li>📊 Il est essentiel pour surveiller et diagnostiquer les réseaux IP.</li>
+          </ul>
+
+
+          <!-- PING -->
+          <button onclick="document.getElementById('ping-content').classList.toggle('hidden');
+                         document.getElementById('arrow-ping').classList.toggle('rotate-180')"
+            class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+            📶 Ping : test de connectivité
+            <svg id="arrow-ping" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-300"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div id="ping-content" class="hidden mt-4">
+            <p><strong>Ping</strong> est un utilitaire réseau qui utilise le protocole ICMP pour tester la connectivité
+              entre deux appareils. Il envoie une requête <strong>Echo Request</strong> à une cible, et si celle-ci est
+              joignable, elle répond par un <strong>Echo Reply</strong>.</p>
+
+            <p>Ping sert principalement à vérifier si un hôte est accessible sur le réseau et à mesurer le temps
+              nécessaire pour qu'un paquet voyage de l'émetteur vers la cible et en revienne. Ce temps est appelé
+              <strong>RTT (Round-Trip Time)</strong>.
+            </p>
+
+            <ul class="list-disc list-inside ml-6 space-y-2">
+              <li>⏱️ Permet de mesurer la <strong>latence</strong> (temps de réponse).</li>
+              <li>📉 Détecte la <strong>perte de paquets</strong>.</li>
+              <li>🕒 Le RTT représente le temps nécessaire pour un paquet d'aller de l'émetteur à la cible et d'en
+                revenir.</li>
+            </ul>
+
+            <p class="mt-4">
+              Le RTT est mesuré en millisecondes (ms). Un RTT faible indique une connexion rapide et efficace, tandis
+              qu'un RTT élevé peut signaler des problèmes tels qu'une congestion réseau ou une grande distance entre les
+              appareils.
+            </p>
+
+            <h4 class="font-semibold text-gray-800 mt-4">Comment fonctionne le test Ping ?</h4>
+            <ul class="list-disc list-inside space-y-2 text-gray-700">
+              <li>📤 Ton ordinateur envoie une requête ICMP (Echo Request) vers la cible (par exemple, un serveur).</li>
+              <li>📥 La cible répond avec une requête ICMP Echo Reply.</li>
+              <li>🕒 Le RTT est calculé en mesurant le temps écoulé entre l'envoi de la requête et la réception de la
+                réponse.</li>
+            </ul>
+
+            <div class="bg-white border border-blue-200 p-4 rounded-lg shadow-inner mt-4">
+              <code
+                class="font-mono text-sm text-gray-800">64 bytes from 142.250.74.14: icmp_seq=1 ttl=114 time=28.3 ms</code>
+              <p class="mt-2 text-sm text-gray-600">👉 Ici, le RTT est de <strong>28.3 ms</strong></p>
+            </div>
+
+            <p class="italic text-gray-600 mt-4">
+              Note : Le RTT peut varier selon la distance entre l'émetteur et la cible, la qualité du réseau, ou encore
+              la
+              congestion Internet.
+            </p>
+          </div>
+
+
+          <!-- TRACEROUTE -->
+          <button onclick="document.getElementById('traceroute-content').classList.toggle('hidden');
+          document.getElementById('arrow-traceroute').classList.toggle('rotate-180')"
+            class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+            🛣️ Traceroute : Visualiser le chemin des paquets
+            <svg id="arrow-traceroute" xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div id="traceroute-content" class="hidden mt-4 bg-white text-gray-800 space-y-4">
+
+            <p>
+              <strong>Traceroute</strong> est un outil de diagnostic réseau qui te permet de suivre le chemin qu'un
+              paquet de données
+              emprunte depuis ton appareil jusqu’à un serveur distant, comme <code
+                class="bg-white border px-1 rounded text-sm">google.com</code>.
+            </p>
+
+            <p>
+              Imagine que chaque paquet est une lettre, et chaque routeur est un bureau de poste. Traceroute te montre
+              tous les bureaux
+              par lesquels ta lettre passe.
+            </p>
+
+            <ul class="list-disc list-inside space-y-2">
+              <li>🔍 Traceroute envoie plusieurs paquets avec un TTL (Time To Live) qui augmente progressivement (1, 2,
+                3, ...).</li>
+              <li>🧭 Chaque routeur décrémente le TTL d’un paquet. Si le TTL atteint 0, le routeur répond avec un
+                message ICMP.</li>
+              <li>💡 Cela permet à Traceroute de découvrir chaque routeur sur le chemin, étape par étape.</li>
+              <li>⏱️ Traceroute mesure aussi le temps que chaque saut met, ce qui aide à détecter les ralentissements.
+              </li>
+            </ul>
+
+            <h4 class="text-lg font-semibold text-blue-600">💡 Exemple de Traceroute</h4>
+            <div class="bg-white border border-blue-200 p-4 rounded-lg shadow-inner font-mono text-sm">
+              traceroute google.com<br>
+              1 192.168.1.1 1.2 ms 🏠 (Routeur local)<br>
+              2 10.0.0.1 5.4 ms 🛰️ (Fournisseur Internet)<br>
+              3 72.14.234.1 12.1 ms 🌐 (Routeur intermédiaire)<br>
+              4 142.250.74.14 28.3 ms 🧭 (Serveur de Google)
+            </div>
+
+            <h4 class="text-lg font-semibold text-blue-600">💥 Exemple avec un saut bloqué</h4>
+            <div class="bg-white border border-red-200 p-4 rounded-lg shadow-inner font-mono text-sm text-gray-800">
+              traceroute example.com<br>
+              1 192.168.1.1 1.1 ms 🏠 (Routeur local)<br>
+              2 10.0.0.1 5.3 ms 🛰️ (Fournisseur Internet)<br>
+              3 * * * — ❌ (Pas de réponse du routeur)<br>
+              4 203.0.113.1 30.8 ms 🌐 (Routeur suivant)
+            </div>
+
+            <p class="italic text-sm text-red-600 mt-2">
+              ⚠️ À l’étape 3, aucun message de réponse n’a été reçu. Cela peut indiquer un routeur qui bloque les
+              requêtes ICMP
+              ou un problème temporaire sur le chemin.
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- NAT -->
+    <section class="mb-4">
+      <div class="bg-white p-4 rounded-xl shadow border-l-4 border-blue-400">
+        <!-- Bouton d'affichage -->
+        <button onclick="document.getElementById('nat-content').classList.toggle('hidden')"
+          class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+          📡 NAT : Mécanisme de traduction d'adresses IP
+          <svg id="arrow-traceroute" xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <!-- Contenu NAT masqué au départ -->
+        <div id="nat-content" class="hidden space-y-6 bg-white text-gray-800 text-lg">
+
+          <p>
+            Le <strong>NAT</strong> est une technique utilisée par les routeurs pour permettre à plusieurs appareils
+            connectés à un réseau privé
+            (comme ta maison ou ton école) de partager une seule <span class="text-blue-600 font-semibold">adresse IP
+              publique</span> pour aller sur Internet.
+          </p>
+
+          <div class="bg-blue-50 p-4 rounded-lg shadow-inner space-y-2">
+            <h3 class="text-xl font-semibold text-blue-600">🔎 À quoi ça sert ?</h3>
+            <ul class="list-disc list-inside">
+              <li>📤 Tous les appareils de ton réseau utilisent la même adresse IP publique pour sortir sur Internet.
+              </li>
+              <li>🔒 Cela cache les adresses privées, ajoutant une <strong>couche de sécurité</strong>.</li>
+              <li>🌍 Cela permet d’économiser les adresses IP publiques (qui sont limitées).</li>
+            </ul>
+          </div>
+
+          <div class="bg-gray-50 p-4 rounded-lg shadow-inner">
+            <h3 class="text-xl font-semibold text-gray-800">📌 Exemple simple</h3>
+            <p>Ton ordi a l’adresse IP locale <code
+                class="bg-white px-1 py-0.5 rounded text-sm font-mono">192.168.0.5</code>.</p>
+            <p>Quand il veut accéder à un site web, le routeur remplace cette adresse par son IP publique, par exemple
+              <code class="bg-white px-1 py-0.5 rounded text-sm font-mono">90.85.120.10</code>.
+            </p>
+            <p>Quand le site répond, le routeur sait à quel appareil renvoyer la réponse grâce à sa <strong>table de
+                correspondance NAT</strong>.</p>
+          </div>
+
+          <div class="bg-blue-100 p-4 rounded-lg shadow-inner space-y-2">
+            <h3 class="text-xl font-semibold text-blue-700">👨‍👩‍👧 Exemple avec plusieurs appareils</h3>
+            <p>Chez toi, plusieurs appareils utilisent le même accès Internet :</p>
+            <ul class="list-disc list-inside">
+              <li>💻 PC → <code class="bg-white px-1 py-0.5 rounded text-sm font-mono">192.168.0.10:55000</code></li>
+              <li>📱 Smartphone → <code class="bg-white px-1 py-0.5 rounded text-sm font-mono">192.168.0.11:55001</code>
+              </li>
+            </ul>
+            <p>Le routeur traduit chaque appareil avec un port différent :</p>
+            <ul class="list-disc list-inside">
+              <li>💻 PC → <code class="bg-white px-1 py-0.5 rounded text-sm font-mono">90.85.120.10:60000</code></li>
+              <li>📱 Smartphone → <code class="bg-white px-1 py-0.5 rounded text-sm font-mono">90.85.120.10:60001</code>
+              </li>
+            </ul>
+            <p class="italic text-gray-600">Ce mécanisme s’appelle le <strong>PAT</strong> (Port Address Translation),
+              utilisé dans presque tous les foyers.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+
+
+    <section class="mb-4">
+      <div class="bg-white p-4 rounded-xl shadow border-l-4 border-blue-400">
+        <!-- Le bouton pour afficher/masquer le contenu Telnet -->
+        <button onclick="document.getElementById('telnet-content').classList.toggle('hidden');
+                       document.getElementById('arrow-telnet').classList.toggle('rotate-180')"
+          class="w-full text-left flex items-center justify-between text-xl font-bold text-blue-700 mb-4">
+          💻 TELNET : Le protocole d'accès à distance
+          <!-- Flèche SVG qui s'inverse lors de l'activation -->
+          <svg id="arrow-telnet" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-300"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <!-- Contenu Telnet masqué par défaut -->
+        <div id="telnet-content" class="hidden bg-white text-lg text-gray-700 space-y-4">
+          <p>
+            Telnet est un protocole réseau de type client-serveur qui permet de se connecter à un ordinateur distant via
+            une interface en ligne de commande, en utilisant le protocole TCP/IP, généralement sur le port 23. Il crée
+            un
+            terminal virtuel, donnant à l'utilisateur l'impression d'être physiquement devant la machine distante, ce
+            qui
+            permet d'administrer des serveurs, des équipements réseau ou de dépanner des services à distance.
+          </p>
+
+          <h3 class="font-semibold text-blue-600">🔍 Fonctionnement</h3>
+          <ul class="list-disc list-inside text-gray-700">
+            <li><strong>Connexion :</strong> Telnet établit une connexion TCP entre le client (votre ordinateur) et le
+              serveur distant.</li>
+            <li><strong>Transmission :</strong> Les frappes clavier sont envoyées au serveur, qui répond en affichant
+              les
+              résultats à l'écran du client, le tout en temps réel.</li>
+            <li>
+              <strong>Non sécurisé :</strong> Les données, y compris les mots de passe, sont transmises en clair, ce qui
+              rend Telnet vulnérable aux interceptions. Pour cette raison, il est aujourd'hui largement remplacé par
+              SSH, qui chiffre les communications
+            </li>
+          </ul>
+
+          <h3 class="font-semibold text-blue-600">🛠️ Utilisations courantes</h3>
+          <ul class="list-disc list-inside text-gray-700">
+            <li><strong>Administration à distance :</strong> Permet de gérer des serveurs ou équipements réseau à
+              distance
+              (ex : switchs, firewalls, etc.).</li>
+            <li><strong>Test et dépannage réseau :</strong> Permet de vérifier si un service écoute sur un port donné
+              (par
+              exemple, <code class="bg-white px-1 py-0.5 rounded text-sm font-mono">telnet serveur 80</code> pour tester
+              un serveur web).</li>
+            <li><strong>Diagnostic des appareils IoT :</strong> Accès à l'interface de commande d'objets connectés, bien
+              que ce soit de moins en moins recommandé pour des raisons de sécurité.</li>
+          </ul>
+
+          <!-- Exemple de commande -->
+          <h3 class="font-semibold text-blue-600">💡 Exemple de commande Telnet</h3>
+          <p>
+            Voici un exemple simple de commande Telnet que tu peux utiliser pour tester si un serveur web est accessible
+            sur le port 80 :
+          </p>
+          <div class="bg-white border border-blue-200 p-4 rounded-lg shadow-inner mt-4">
+            <code
+              class="font-mono text-sm text-gray-800">telnet example.com 80</code>
+          </div>
+
+          <p>
+            Cette commande tente d'établir une connexion Telnet avec <code class="font-mono">example.com</code> sur le
+            port 80 (le port habituel pour les serveurs web). Si la connexion réussit, cela signifie que le serveur web
+            écoute sur ce port. Si la connexion échoue, cela peut signifier que le serveur est hors ligne ou que le port
+            80 est bloqué.
+          </p>
+
+          <h3 class="font-semibold text-blue-600">⚙️ Fonctionnalités techniques</h3>
+          <ul class="list-disc list-inside text-gray-700">
+            <li><strong>Modes de fonctionnement :</strong> Telnet propose plusieurs modes (semi-duplex, caractère, etc.)
+              qui déterminent comment les frappes sont envoyées et comment l'écho est géré.</li>
+            <li><strong>Émulation de terminal :</strong> Grâce au concept de NVT (Network Virtual Terminal), Telnet
+              standardise les commandes et le contrôle d'affichage, quel que soit le type de terminal utilisé.</li>
+            <li><strong>Négociation d'options :</strong> Le client et le serveur peuvent négocier des options comme le
+              type de terminal ou la gestion des interruptions.</li>
+          </ul>
+
+          <h3 class="font-semibold text-blue-600">🔐 Limites et sécurité</h3>
+          <ul class="list-disc list-inside text-gray-700">
+            <li><strong>Pas de chiffrement :</strong> Toutes les données circulent en texte clair, ce qui expose les
+              identifiants et le contenu à des risques d’interception.</li>
+            <li><strong>Remplacé par SSH :</strong> Pour l'administration sécurisée, SSH est aujourd’hui la norme.</li>
+          </ul>
+
+          <h3 class="font-semibold text-blue-600">🔑 En résumé :</h3>
+          <p>
+            Telnet est un protocole historique d'accès à distance en mode texte, utile pour l'administration et le
+            diagnostic réseau, mais obsolète pour les usages sensibles à la sécurité.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+
+</body>
+
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Burp Suite - Analyse complète</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800 leading-relaxed">
+  <div class="max-w-6xl mx-auto px-6 py-10">
+    <h1 class="text-4xl font-bold text-purple-700 mb-6">🔐 Burp Suite – Analyse complète</h1>
+
+    <p class="mb-4">
+      <strong>Burp Suite</strong> est une suite d’outils développée par <strong>PortSwigger</strong>, dédiée à la
+      <strong>sécurité des applications web</strong>. Elle est largement utilisée par les professionnels de la
+      cybersécurité pour détecter, analyser et exploiter les vulnérabilités des sites web.
+    </p>
+
+    <!-- Versions -->
+    <div class="bg-white p-6 rounded shadow mb-8">
+      <h2 class="text-2xl font-semibold text-purple-600 mb-4">🧾 Les différentes versions de Burp Suite</h2>
+
+      <h3 class="text-xl font-semibold text-gray-800">1. Community Edition (Gratuite)</h3>
+      <ul class="list-disc pl-6 mb-4">
+        <li>Idéale pour les particuliers ou l’apprentissage</li>
+        <li>Inclut le proxy HTTP, Repeater et Intruder (fonctionnalité limitée)</li>
+        <li>Pas de scanner de vulnérabilités ni d’automatisation</li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-800">2. Professional Edition (Payante)</h3>
+      <ul class="list-disc pl-6 mb-4">
+        <li>Fonctionnalités avancées pour les pentesters professionnels</li>
+        <li>Inclut le scanner automatisé, Intruder complet, Repeater, Sequencer</li>
+        <li>Accès aux extensions (BApp Store)</li>
+        <li>Automatisation de nombreuses tâches, scan actif/passif</li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-800">3. Enterprise Edition (Payante)</h3>
+      <ul class="list-disc pl-6">
+        <li>Conçue pour les grandes entreprises</li>
+        <li>Scans automatiques en masse, intégration CI/CD</li>
+        <li>Gestion multi-utilisateur, tableaux de bord, contrôle d’accès</li>
+        <li>Single Sign-On, reporting global de la posture de sécurité</li>
+      </ul>
+    </div>
+
+    <!-- Fonctionnalités -->
+    <section class="bg-white shadow rounded-xl p-6 space-y-6">
+      <h2 class="text-2xl font-semibold text-gray-800">🔧 Fonctionnalités principales</h2>
+
+      <!-- Burp Proxy -->
+      <div>
+        <h3 class="text-xl font-bold text-blue-500">1. Burp Proxy</h3>
+        <p>Agit comme un proxy HTTP/HTTPS entre le navigateur et le serveur. Il permet d’intercepter, examiner et
+          modifier les requêtes et réponses en temps réel.</p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li>Analyse des paramètres de requêtes</li>
+          <li>Modification manuelle pour tester des scénarios d’attaque</li>
+          <li>Identification du comportement serveur</li>
+        </ul>
+      </div>
+
+      <!-- Burp Scanner -->
+      <div>
+        <h3 class="text-xl font-bold text-blue-500">2. Burp Scanner (Pro/Enterprise)</h3>
+        <p>Scanner automatisé de vulnérabilités courantes (SQLi, XSS, CSRF...). Effectue des scans passifs (observation)
+          et actifs (tests ciblés).</p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li>Détection automatique de failles OWASP</li>
+          <li>Exploration automatique de l’application</li>
+          <li>Rapports de vulnérabilités détaillés</li>
+        </ul>
+      </div>
+
+      <!-- Burp Intruder -->
+      <div>
+        <h3 class="text-xl font-bold text-blue-500">3. Burp Intruder</h3>
+        <p>Outil d’attaque automatisée permettant d’envoyer des payloads sur des paramètres ciblés.</p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li>Tests de brute force et d’injection</li>
+          <li>Support de multiples stratégies d’injection</li>
+          <li>Filtrage et tri automatique des réponses intéressantes</li>
+        </ul>
+      </div>
+
+      <!-- Burp Repeater -->
+      <div>
+        <h3 class="text-xl font-bold text-blue-500">4. Burp Repeater</h3>
+        <p>Permet de rejouer et modifier manuellement des requêtes HTTP pour observer le comportement du serveur.</p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li>Utilisé pour le fuzzing manuel</li>
+          <li>Exploration des logiques applicatives</li>
+        </ul>
+      </div>
+
+      <!-- Burp Sequencer -->
+      <div>
+        <h3 class="text-xl font-bold text-blue-500">5. Burp Sequencer</h3>
+        <p>Analyse l’aléa des tokens de session pour vérifier leur sécurité. Évalue leur caractère prédictible.</p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li>Analyse statistique de l'entropie</li>
+          <li>Évaluation des cookies ou identifiants</li>
+        </ul>
+      </div>
+
+      <!-- Burp Decoder -->
+      <div>
+        <h3 class="text-xl font-bold text-blue-500">6. Burp Decoder</h3>
+        <p>Outil pour encoder ou décoder des données (Base64, URL, Hex, etc.). Utile pour comprendre des valeurs
+          transmises.</p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li>Conversion rapide entre formats</li>
+          <li>Déchiffrement et encodage de tokens</li>
+        </ul>
+      </div>
+
+      <!-- Burp Comparer -->
+      <div>
+        <h3 class="text-xl font-bold text-blue-500">7. Burp Comparer</h3>
+        <p>Compare deux jeux de données (requêtes, réponses) pour en voir les différences.</p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li>Visualisation des différences ligne à ligne</li>
+          <li>Comparaison d'états authentifié vs non authentifié</li>
+        </ul>
+      </div>
+
+      <!-- Extensions -->
+      <div>
+        <h3 class="text-xl font-bold text-blue-500">8. Extensions (BApp Store)</h3>
+        <p>Burp peut être étendu avec plus de 250 extensions via le BApp Store.</p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li>Support Python, Java, Ruby</li>
+          <li>Extensions populaires : Autorize, Retire.js, Logger++, ActiveScan++</li>
+          <li>Personnalisation avancée des audits</li>
+        </ul>
+      </div>
+
+      <!-- Résumé -->
+      <div class="mt-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">📊 Tableau Résumé</h3>
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm text-left border">
+            <thead class="bg-blue-100 text-gray-700 font-semibold">
+              <tr>
+                <th class="px-4 py-2 border">Outil</th>
+                <th class="px-4 py-2 border">Utilisation</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white">
+              <tr>
+                <td class="px-4 py-2 border">Burp Proxy</td>
+                <td class="px-4 py-2 border">Interception/modification du trafic</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">Burp Scanner</td>
+                <td class="px-4 py-2 border">Scan automatique de vulnérabilités</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">Burp Intruder</td>
+                <td class="px-4 py-2 border">Attaques automatisées ciblées</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">Burp Repeater</td>
+                <td class="px-4 py-2 border">Rejeu manuel de requêtes</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">Burp Sequencer</td>
+                <td class="px-4 py-2 border">Analyse de l’aléa des tokens</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">Burp Decoder</td>
+                <td class="px-4 py-2 border">Encodage/décodage de données</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">Burp Comparer</td>
+                <td class="px-4 py-2 border">Comparaison de données</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">Extensions BApps</td>
+                <td class="px-4 py-2 border">Personnalisation et modules additionnels</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Utilisations -->
+    <div class="bg-white p-6 rounded shadow mb-8">
+      <h2 class="text-2xl font-semibold text-purple-600 mb-4">🧪 Utilisations typiques</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Interception/modification du trafic HTTP/HTTPS avec Burp Proxy</li>
+        <li>Scan automatisé de vulnérabilités avec Burp Scanner (version Pro)</li>
+        <li>Tests manuels approfondis avec Repeater et Intruder</li>
+        <li>Évaluation de la sécurité logique des applications</li>
+        <li>Intégration de tests de sécurité dans un pipeline DevSecOps (Enterprise)</li>
+      </ul>
+    </div>
+
+    <!-- Comparatif -->
+    <div class="bg-white p-6 rounded shadow mb-8 overflow-x-auto">
+      <h2 class="text-2xl font-semibold text-purple-600 mb-4">📊 Comparaison des versions</h2>
+      <table class="min-w-full text-sm text-left border border-gray-300">
+        <thead class="bg-purple-100">
+          <tr>
+            <th class="px-4 py-2 border">Fonctionnalité</th>
+            <th class="px-4 py-2 border">Community</th>
+            <th class="px-4 py-2 border">Professional</th>
+            <th class="px-4 py-2 border">Enterprise</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white">
+          <tr>
+            <td class="border px-4 py-2">Prix</td>
+            <td class="border px-4 py-2">Gratuit</td>
+            <td class="border px-4 py-2">~449$/an</td>
+            <td class="border px-4 py-2">Entreprise</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">Scanner de vulnérabilités</td>
+            <td class="border px-4 py-2">❌</td>
+            <td class="border px-4 py-2">✅</td>
+            <td class="border px-4 py-2">✅</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">Proxy HTTP</td>
+            <td class="border px-4 py-2">✅</td>
+            <td class="border px-4 py-2">✅</td>
+            <td class="border px-4 py-2">✅</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">Intruder complet</td>
+            <td class="border px-4 py-2">Limité</td>
+            <td class="border px-4 py-2">✅</td>
+            <td class="border px-4 py-2">✅</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">Repeater</td>
+            <td class="border px-4 py-2">✅</td>
+            <td class="border px-4 py-2">✅</td>
+            <td class="border px-4 py-2">✅</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">Extensions (BApps)</td>
+            <td class="border px-4 py-2">❌</td>
+            <td class="border px-4 py-2">✅</td>
+            <td class="border px-4 py-2">✅</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">CI/CD</td>
+            <td class="border px-4 py-2">❌</td>
+            <td class="border px-4 py-2">Partielle</td>
+            <td class="border px-4 py-2">✅</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">SSO / Rôles</td>
+            <td class="border px-4 py-2">❌</td>
+            <td class="border px-4 py-2">❌</td>
+            <td class="border px-4 py-2">✅</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Installation -->
+    <div class="bg-white p-6 rounded shadow mb-8">
+      <h2 class="text-2xl font-semibold text-purple-600 mb-4">📥 Installation sur Kali Linux</h2>
+      <p class="mb-2">Burp Suite est préinstallé sur Kali Linux. Si besoin, installe-le manuellement :</p>
+      <pre class="bg-gray-800 text-white p-4 rounded"><code>sudo apt update
+sudo apt install burpsuite</code></pre>
+      <p class="mt-4">Lance Burp Suite avec :</p>
+      <pre class="bg-gray-800 text-white p-4 rounded"><code>burpsuite</code></pre>
+    </div>
+
+
+
+
+
+
+    <section class="bg-white p-6 rounded-lg shadow-lg mb-6">
+      <!-- Bouton avec l'arrow et le texte cliquable -->
+      <button onclick="document.getElementById('event-log-details').classList.toggle('hidden');
+                      document.getElementById('arrow-event-log').classList.toggle('rotate-180')"
+        class="w-full text-left flex items-center justify-between text-2xl font-bold text-blue-700 mb-4">
+        🔍 Qu'est-ce que l'Event Log dans Burp Suite ?
+        <svg id="arrow-event-log" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-300"
+          fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <!-- Contenu caché avec la classe hidden par défaut -->
+      <div id="event-log-details" class="hidden mt-4">
+        <!-- Section : Qu'est-ce que l'Event Log -->
+        <section class="bg-white p-6 rounded-lg shadow-lg mb-6">
+          
+          <p>
+            L'<strong>Event Log</strong> (Journal d'événements) dans <strong>Burp Suite</strong> est un outil essentiel
+            pour
+            surveiller les activités internes et les erreurs du système. Il fournit un aperçu complet des actions
+            réalisées
+            par la suite d'outils, notamment :
+          </p>
+          <ul class="list-disc list-inside ml-6 mt-4">
+            <li>Surveiller les communications réseau</li>
+            <li>Identifier les erreurs internes et les problèmes de connexion</li>
+            <li>Visualiser les actions des extensions BApp</li>
+            <li>Diagnostiquer les problèmes liés au proxy et au scanner</li>
+          </ul>
+        </section>
+
+        <!-- Section : Où trouver l'Event Log -->
+        <section class="bg-white p-6 rounded-lg shadow-lg mb-6">
+          <h2 class="text-3xl font-semibold text-blue-600 mb-4">Où trouver l'Event Log ?</h2>
+          <p>
+            Vous pouvez accéder à l'<strong>Event Log</strong> dans le menu suivant :
+          </p>
+          <pre class="bg-gray-100 p-4 rounded-lg text-gray-800 mt-4">Burp Suite → Dashboard → Event Log</pre>
+        </section>
+
+        <!-- Section : Ce que vous pouvez voir dans l'Event Log -->
+        <section class="bg-white p-6 rounded-lg shadow-lg mb-6">
+          <h2 class="text-3xl font-semibold text-blue-600 mb-4">Ce que vous pouvez voir dans l'Event Log</h2>
+          <p>Voici les différents types d'événements que vous pouvez trouver dans le journal :</p>
+          <table class="min-w-full mt-4 table-auto border-collapse border border-gray-300">
+            <thead>
+              <tr class="bg-blue-200">
+                <th class="border px-4 py-2">Type d'Événement</th>
+                <th class="border px-4 py-2">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border px-4 py-2">🟢 Info</td>
+                <td class="border px-4 py-2">Informations générales, comme le démarrage d'un scanner.</td>
+              </tr>
+              <tr>
+                <td class="border px-4 py-2">🟡 Warning</td>
+                <td class="border px-4 py-2">Avertissements sur des anomalies bénignes (ex: domaine non résolu).</td>
+              </tr>
+              <tr>
+                <td class="border px-4 py-2">🔴 Error</td>
+                <td class="border px-4 py-2">Erreurs critiques (ex: échec de connexion au proxy, scanner bloqué).</td>
+              </tr>
+              <tr>
+                <td class="border px-4 py-2">🔌 Extension</td>
+                <td class="border px-4 py-2">Logs produits par les extensions installées.</td>
+              </tr>
+              <tr>
+                <td class="border px-4 py-2">🔍 Scan</td>
+                <td class="border px-4 py-2">Événements liés à l'état des scans (en cours, terminé, échec, etc.).</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Section : Exemple d'événements dans l'Event Log -->
+        <section class="bg-white p-6 rounded-lg shadow-lg mb-6">
+          <h2 class="text-3xl font-semibold text-blue-600 mb-4">Exemples d'Entrées de Journal</h2>
+          <pre class="bg-gray-100 p-4 rounded-lg text-gray-800">
+[13:04:05] Burp Scanner started
+[13:04:10] Crawling http://demo-vulnerable.com started
+[13:04:12] Warning: Target page returned unexpected HTTP status code 500
+[13:04:15] Error loading extension passive-scanner.bapp
+        </pre>
+          <p>Ce sont des exemples d'événements visibles dans le journal, montrant des actions comme le démarrage d'un
+            scanner, une erreur HTTP, ou un échec de chargement d'extension.</p>
+        </section>
+
+        <!-- Section : Utilité de l'Event Log -->
+        <section class="bg-white p-6 rounded-lg shadow-lg mb-6">
+          <h2 class="text-3xl font-semibold text-blue-600 mb-4">Pourquoi l'Event Log est-il utile ?</h2>
+          <ul class="list-disc list-inside ml-6 mt-4">
+            <li><strong>Débogage :</strong> Identifier les problèmes de proxy ou d'analyse.</li>
+            <li><strong>Surveillance :</strong> Observer les erreurs, alertes, ou comportement inattendu du serveur
+              cible.
+            </li>
+            <li><strong>Diagnostique :</strong> Réaliser un diagnostic approfondi des vulnérabilités détectées et des
+              processus en cours.</li>
+            <li><strong>Rapport :</strong> Documenter les erreurs ou les anomalies dans un rapport de test de
+              pénétration.
+            </li>
+          </ul>
+        </section>
+
+        <!-- Section : Exporter l'Event Log -->
+        <section class="bg-white p-6 rounded-lg shadow-lg mb-6">
+          <h2 class="text-3xl font-semibold text-blue-600 mb-4">Exporter l'Event Log</h2>
+          <p>Bien qu'il n'y ait pas de fonction d'exportation directe dans Burp Suite, vous pouvez :</p>
+          <ul class="list-disc list-inside ml-6 mt-4">
+            <li>Clic-droit > <strong>Copy Selected Events</strong> pour copier les événements dans votre presse-papiers.
+            </li>
+            <li>Prendre des captures d'écran pour documenter un problème spécifique.</li>
+            <li>Utiliser l'API Burp Suite en version Pro pour exporter des logs au format JSON/XML si vous avez besoin
+              de
+              traiter les logs automatiquement.</li>
+          </ul>
+        </section>
+
+        <!-- Section : Surveiller les erreurs côté serveur -->
+        <section class="bg-white p-6 rounded-lg shadow-lg mb-6">
+          <h2 class="text-3xl font-semibold text-blue-600 mb-4">Surveiller les Erreurs Côté Serveur</h2>
+          <p>
+            L'Event Log peut vous alerter sur des erreurs serveur comme un code HTTP 500, signalant un problème interne
+            sur
+            le serveur de la cible. Cela peut être une indication de vulnérabilité ou de configuration incorrecte à
+            explorer.
+          </p>
+        </section>
+      </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="text-center text-sm text-gray-500 mt-8">
+      © 2025 | Fiche technique Burp Suite – Par TryHackMe Learner
+    </footer>
+  </div>
+</body>
+
+</html>

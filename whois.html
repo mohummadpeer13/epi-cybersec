@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analyse Whois - Pentest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <div class="max-w-4xl mx-auto p-6">
+      <header class="mb-8">
+        <h1 class="text-3xl font-bold text-blue-600">Analyse des Résultats Whois</h1>
+        <p class="text-gray-600">Un aperçu de l'utilisation de la commande Whois lors d'un test d'intrusion</p>
+      </header>
+
+      <!-- Section: Introduction -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">Qu'est-ce que la commande Whois ?</h2>
+        <p>
+          La commande <code>whois</code> permet de récupérer des informations publiques sur l'enregistrement d'un domaine Internet. Ces informations peuvent inclure le propriétaire du domaine, les serveurs DNS utilisés, et bien plus encore.
+        </p>
+      </section>
+
+      <!-- Section: Commande Whois -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">Exemple de commande Whois</h2>
+        <p>Voici un exemple de commande <code>whois</code> pour obtenir des informations sur un domaine :</p>
+        <pre class="bg-gray-200 p-3 rounded">
+whois demo-vulnerable.com
+        </pre>
+        <p>
+          Cette commande va interroger la base de données WHOIS pour le domaine <strong>demo-vulnerable.com</strong> et retourner les informations liées à son enregistrement.
+        </p>
+      </section>
+
+      <!-- Section: Analyser les résultats -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">Analyser les Résultats</h2>
+        <p>Voici un exemple de ce que tu pourrais trouver comme résultats :</p>
+        <pre class="bg-gray-200 p-3 rounded">
+Domain Name: demo-vulnerable.com
+Registrar: Example Registrar, Inc.
+Registrar WHOIS Server: whois.example-registrar.com
+Registrar URL: http://example-registrar.com
+Creation Date: 2022-05-01
+Updated Date: 2024-05-01
+Expiration Date: 2025-05-01
+
+Registrant Name: John Doe
+Registrant Organization: Example Corp.
+Registrant Address: 1234 Elm Street, Some City, Some Country
+Registrant Email: john.doe@example.com
+Registrant Phone: +1-123-456-7890
+
+Name Server: ns1.exampledns.com
+Name Server: ns2.exampledns.com
+        </pre>
+      </section>
+
+      <!-- Section: Ce qu'il faut rechercher -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">Ce qu'il faut rechercher dans les résultats</h2>
+        <p>Lorsque tu examines les résultats de la commande <code>whois</code>, il y a plusieurs éléments clés à surveiller :</p>
+        <ul class="list-disc list-inside">
+          <li><strong>Identité du propriétaire</strong> : Cherche des informations comme le nom, l'organisation, l'email et le téléphone. Cela peut t'aider à trouver des contacts ou à comprendre l'origine du domaine.</li>
+          <li><strong>Serveurs DNS</strong> : Les serveurs DNS te donneront des indices sur l'hébergement et l'infrastructure du domaine. Parfois, ces informations sont cruciales pour comprendre comment attaquer le domaine.</li>
+          <li><strong>Dates de création et d'expiration</strong> : Ces informations peuvent te donner un aperçu sur la longévité du domaine et sur d'éventuels changements imminents.</li>
+          <li><strong>Protection de la vie privée</strong> : Si un domaine utilise un service de protection de la vie privée, il est possible que le propriétaire ait caché ses informations personnelles. Cela peut rendre l'analyse plus difficile, mais aussi plus intéressant pour un test d'intrusion.</li>
+        </ul>
+      </section>
+
+      <!-- Section: Utilisation dans un Pentest -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">Utilisation de Whois dans un Pentest</h2>
+        <p>Dans le cadre d'un test d'intrusion, l'outil <code>whois</code> peut t'aider à :</p>
+        <ul class="list-disc list-inside">
+          <li><strong>Identifier l'hébergeur</strong> du domaine, ce qui peut t'aider à déterminer où le serveur cible est localisé.</li>
+          <li><strong>Repérer les informations de contact</strong>, notamment des emails ou numéros de téléphone qui pourraient être utilisés pour des attaques par ingénierie sociale.</li>
+          <li><strong>Suivre les dates de création</strong> pour comprendre si le domaine est récent ou bien établi. Un domaine récent pourrait signifier qu'il est plus vulnérable.</li>
+        </ul>
+      </section>
+
+      <!-- Section: Conclusion -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">Conclusion</h2>
+        <p>
+          L'utilisation de la commande <code>whois</code> lors d'un test d'intrusion est une étape fondamentale pour obtenir des informations sur un domaine et son infrastructure. Cela peut t'aider à trouver des points d'entrée, identifier l'hébergeur ou même des informations sensibles sur le propriétaire du domaine. Bien que ce soit une reconnaissance passive, cela peut t'ouvrir des pistes importantes pour tes attaques futures.
+        </p>
+      </section>
+
+      <footer class="text-center text-sm text-gray-500 mt-8">
+        Rapport généré par PentestGPT · 2025
+      </footer>
+    </div>
+  </body>
+</html>

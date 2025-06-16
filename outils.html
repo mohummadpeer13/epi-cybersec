@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outils</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .collapse-content {
+            display: none;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .collapse-content.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 font-sans">
+    <div class="mx-auto p-20">
+
+        <header class="bg-blue-600 text-white p-6 rounded-lg shadow-md mb-6">
+            <h1 class="text-3xl font-bold"><i class="fas fa-network-wired mr-2"></i>Cybersécurité</h1>
+            <p class="mt-2">Projet SOCAT - Epitech 2025</p>
+        </header>
+
+        <!-- NMAP -->
+        <section class="bg-white rounded-lg shadow-md mb-6 overflow-hidden">
+            <button onclick="toggleCollapse('nmapIntro')" class="w-full text-left p-6">
+                <h2 class="text-2xl font-bold text-blue-600 flex justify-between items-center">
+                    <h1 class="text-3xl font-bold"><i class="fas fa-network-wired mr-2"></i>Nmap</h1>
+                    <p class="mt-2">Commandes essentielles pour la cybersécurité et le pentesting.</p>
+                </h2>
+            </button>
+            <div id="nmapIntro" class="collapse-content px-6 pb-6">
+                <p class="mb-4">Nmap (Network Mapper) est un outil open-source pour analyser les réseaux, découvrir les
+                    hôtes actifs, scanner les ports et identifier les services.</p>
+                <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4">
+                    <p class="text-yellow-700"><i class="fas fa-exclamation-triangle mr-2"></i><strong>Attention
+                            :</strong> N'utilisez Nmap que sur des réseaux autorisés.</p>
+                </div>
+
+                <!-- Commandes de base -->
+                <section class="bg-white p-6 rounded-lg shadow-md mb-6">
+                    <h2 class="text-2xl font-bold text-blue-600 mb-4"><i class="fas fa-terminal mr-2"></i>Commandes de
+                        base</h2>
+
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-gray-50 rounded-lg">
+                            <thead class="bg-blue-500 text-white">
+                                <tr>
+                                    <th class="p-3 text-left">Commande</th>
+                                    <th class="p-3 text-left">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">nmap -sn 192.168.1.0/24</td>
+                                    <td class="p-3">Scan des hôtes actifs. L'option -sn (pour scan no port)
+                                        dit à Nmap de ne PAS scanner les ports, mais simplement de voir quels hôtes sont
+                                        en ligne sur un réseau.
+                                        C'est une méthode rapide pour détecter les machines actives, sans vérifier quels
+                                        services tournent dessus.</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">nmap -sS 192.168.1.1</td>
+                                    <td class="p-3">Scan furtif (SYN). Technique de scan de ports utilisée pour éviter
+                                        d'être détecté par un pare-feu ou un système de détection d'intrusion (IDS).
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">nmap -sV 192.168.1.1</td>
+                                    <td class="p-3">Détection des versions des services. Permet de détecter la version
+                                        exacte des services qui tournent sur les ports ouverts d'une machine.
+                                        Tu ne vois pas seulement que le port 80 est ouvert... tu sais si c'est Apache
+                                        2.4.25 ou nginx 1.18, par exemple.</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">nmap -O 192.168.1.1</td>
+                                    <td class="p-3">Détection de l'OS. Permet à Nmap d'estimer le système d'exploitation
+                                        de la machine distante (Windows, Linux, BSD, etc.), ainsi que des détails comme
+                                        la version du noyau ou le type d'appareil (routeur, imprimante...).
+                                        Il analyse la manière dont la cible répond à certains paquets TCP/IP pour
+                                        deviner l'OS.</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">nmap -A 192.168.1.1</td>
+                                    <td class="p-3">Scan agressif (OS + versions). Combine plusieurs fonctions
+                                        puissantes de Nmap pour fournir une analyse complète d'une cible.
+                                        C'est comme une commande « tout-en-un » pour récolter un maximum d'informations.
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">nmap -p- 192.168.1.1</td>
+                                    <td class="p-3">Scan tous les ports (1-65535). Par défaut, Nmap ne scanne que les 1
+                                        000 ports les plus courants.
+                                        Mais avec -p-, tu lui dis :<br>
+                                        "Scanne absolument tous les ports TCP, de 1 à 65535 !"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Bonnes pratiques -->
+                <section class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold text-blue-600 mb-4"><i class="fas fa-check-circle mr-2"></i>Bonnes
+                        pratiques
+                    </h2>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Utilisez <span class="font-mono bg-gray-100 px-2">-sS</span> pour des scans discrets.</li>
+                        <li>Évitez les scans agressifs (<span class="font-mono bg-gray-100 px-2">-T4/T5</span>) sur des
+                            réseaux
+                            sensibles.</li>
+                        <li>Sauvegardez les résultats avec <span class="font-mono bg-gray-100 px-2">-oN scan.txt</span>
+                            ou <span class="font-mono bg-gray-100 px-2">-oX scan.xml</span>.</li>
+                        <li>Testez toujours en environnement contrôlé (machines virtuelles, labs).</li>
+                    </ul>
+                </section>
+            </div>
+        </section>
+
+        <!-- GOBUSTER -->
+        <section class="bg-white rounded-lg shadow-md mb-6 overflow-hidden">
+            <button onclick="toggleCollapse('gobusterIntro')" class="w-full text-left p-6">
+                <h2 class="text-2xl font-bold text-purple-600 flex justify-between items-center">
+                    <h1 class="text-3xl font-bold"><i class="fas fa-search mr-2"></i>Gobuster</h1>
+                    <p class="mt-2">Commandes essentielles pour l'énumération web et DNS</p>
+                </h2>
+            </button>
+            <div id="gobusterIntro" class="collapse-content px-6">
+
+                <!-- Section "Qu'est-ce que Gobuster ?" élargie -->
+                <section class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <p class="mt-2 text-gray-700 mb-2">
+                        Gobuster est un outil puissant utilisé pour découvrir rapidement des dossiers, fichiers et
+                        sous-domaines cachés sur un site web ou un domaine.
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4 mb-4">
+                        <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                            <h3 class="font-bold text-purple-700 mb-2"><i
+                                    class="fas fa-folder-tree mr-2"></i>Énumération web</h3>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Découvrir des dossiers et fichiers cachés</li>
+                                <li>Trouver des pages d'administration</li>
+                                <li>Identifier des fichiers sensibles oubliés</li>
+                            </ul>
+                        </div>
+                        <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                            <h3 class="font-bold text-purple-700 mb-2"><i
+                                    class="fas fa-network-wired mr-2"></i>Énumération DNS</h3>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Détecter des sous-domaines</li>
+                                <li>Découvrir des services cachés</li>
+                                <li>Cartographier l'infrastructure</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mb-4 p-4">
+                        <h3 class="font-bold text-lg text-purple-700 mb-2"><i
+                                class="fas fa-question-circle mr-2"></i>Pourquoi c'est important ?</h3>
+                        <p class="mb-2">En test de sécurité, Gobuster permet de trouver des points d'entrée cachés :
+                        </p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Interfaces d'administration non liées depuis le site principal</li>
+                            <li>Fichiers de sauvegarde (.bak, .old) contenant des données sensibles</li>
+                            <li>Sous-domaines de développement (dev., staging.) potentiellement vulnérables</li>
+                            <li>API internes exposées par erreur</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                        <p class="text-blue-700">
+                            <i class="fas fa-lightbulb mr-2"></i> <strong>Avantage clé :</strong> Gobuster
+                            automatise cette recherche fastidieuse qui serait impossible à faire manuellement, tout
+                            en étant plus discret qu'un scanner graphique.
+                        </p>
+                    </div>
+
+                    <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 mt-4">
+                        <p class="text-yellow-700"><i class="fas fa-exclamation-triangle mr-2"></i><strong>Attention
+                                :</strong> N'utilisez Gobuster que sur des systèmes pour lesquels vous avez une
+                            autorisation écrite.</p>
+                    </div>
+
+                </section>
+
+                <!-- Commandes de base -->
+                <section class="bg-white p-6 rounded-lg shadow-md mb-6">
+                    <h2 class="text-2xl font-bold text-purple-600 mb-4"><i class="fas fa-terminal mr-2"></i>Commandes
+                        essentielles</h2>
+
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-gray-50 rounded-lg">
+                            <thead class="bg-purple-500 text-white">
+                                <tr>
+                                    <th class="p-3 text-left">Commande</th>
+                                    <th class="p-3 text-left">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">gobuster dir -u http://site.com -w
+                                        wordlist.txt</td>
+                                    <td class="p-3">
+                                        <strong>Scan de répertoires web</strong><br>
+                                        <span class="text-purple-600">-u</span> : URL cible<br>
+                                        <span class="text-purple-600">-w</span> : Wordlist à utiliser
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">gobuster dns -d example.com -w subdomains.txt
+                                    </td>
+                                    <td class="p-3">
+                                        <strong>Découverte de sous-domaines</strong><br>
+                                        <span class="text-purple-600">-d</span> : Domaine cible<br>
+                                        Résolution DNS avec serveurs par défaut
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">gobuster vhost -u http://site.com -w hosts.txt
+                                    </td>
+                                    <td class="p-3">
+                                        <strong>Détection d'hôtes virtuels</strong><br>
+                                        Utile pour trouver des sous-domaines non résolus par DNS
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Options fréquentes -->
+                <section class="bg-white p-6 rounded-lg shadow-md mb-6">
+                    <h2 class="text-2xl font-bold text-purple-600 mb-4"><i class="fas fa-sliders-h mr-2"></i>Options
+                        importantes
+                    </h2>
+
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-gray-50 rounded-lg">
+                            <thead class="bg-purple-500 text-white">
+                                <tr>
+                                    <th class="p-3 text-left">Option</th>
+                                    <th class="p-3 text-left">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">-x php,html,txt</td>
+                                    <td class="p-3">Extensions à tester (séparées par des virgules)</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">-t 50</td>
+                                    <td class="p-3">Nombre de threads (par défaut: 10)</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">-o result.txt</td>
+                                    <td class="p-3">Sauvegarde des résultats dans un fichier</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">-k</td>
+                                    <td class="p-3">Ignore la vérification du certificat SSL</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">-s 200,204</td>
+                                    <td class="p-3">Codes HTTP à considérer comme valides</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Bonnes pratiques -->
+                <section class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold text-purple-600 mb-4"><i class="fas fa-check-circle mr-2"></i>Bonnes
+                        pratiques
+                    </h2>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Utilisez des <span class="font-mono bg-gray-100 px-2">wordlists adaptées</span> (common.txt,
+                            directory-list-2.3-medium.txt)</li>
+                        <li>Limitez le débit avec <span class="font-mono bg-gray-100 px-2">--delay</span> pour éviter le
+                            bannissement</li>
+                        <li>Testez différentes <span class="font-mono bg-gray-100 px-2">extensions</span> (-x
+                            php,aspx,jsp)</li>
+                        <li>Utilisez <span class="font-mono bg-gray-100 px-2">-k</span> pour les sites avec SSL/TLS</li>
+                        <li>Documentez toujours vos résultats avec <span class="font-mono bg-gray-100 px-2">-o</span>
+                        </li>
+                    </ul>
+                </section>
+
+            </div>
+        </section>
+
+        <!-- DIRB -->
+        <section class="bg-white rounded-lg shadow-md mb-6 overflow-hidden">
+            <button onclick="toggleCollapse('dirbIntro')" class="w-full text-left p-6">
+                <h2 class="text-2xl font-bold text-orange-600 flex justify-between items-center">
+                    <h1 class="text-3xl font-bold"><i class="fas fa-search mr-2"></i>Dirb</h1>
+                    <p class="mt-2">Outil d'énumération web pour découvrir des répertoires et fichiers cachés</p>
+                </h2>
+            </button>
+            <div id="dirbIntro" class="collapse-content px-6 pb-6">
+                <div class="grid md:grid-cols-2 gap-6 mb-4">
+                    <div>
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-cogs mr-2"></i>Définition</h3>
+                        <p class="mb-4">Dirb (Directory Brute-forcer) est un scanner web qui recherche :</p>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Répertoires cachés sur un serveur web</li>
+                            <li>Fichiers sensibles (config, backups)</li>
+                            <li>Pages d'administration non liées</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-lightbulb mr-2"></i>Différence avec Gobuster
+                        </h3>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Plus ancien mais toujours efficace</li>
+                            <li>Inclus par défaut dans Kali Linux</li>
+                            <li>Wordlists intégrées</li>
+                            <li>Moins rapide que Gobuster</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+                    <h3 class="font-bold text-blue-700 mb-2"><i class="fas fa-bullseye mr-2"></i>Cas d'usage typiques
+                    </h3>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Trouver <span class="font-mono bg-blue-100 px-1">/admin</span> ou <span
+                                class="font-mono bg-blue-100 px-1">/backup</span></li>
+                        <li>Détecter des fichiers <span class="font-mono bg-blue-100 px-1">.git</span> exposés</li>
+                        <li>Identifier des pages de login cachées</li>
+                        <li>Trouver des fichiers <span class="font-mono bg-blue-100 px-1">robots.txt</span> ou <span
+                                class="font-mono bg-blue-100 px-1">phpinfo.php</span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4">
+                    <p class="text-yellow-700"><i class="fas fa-exclamation-triangle mr-2"></i><strong>Attention
+                            :</strong> Dirb peut générer beaucoup de requêtes - utilisez <span
+                            class="font-mono bg-yellow-200 px-1">-z</span> pour limiter le débit.</p>
+                </div>
+
+
+
+                <!-- Commandes principales -->
+                <section class="bg-white p-6 rounded-lg shadow-md mb-6">
+                    <h2 class="text-2xl font-bold text-orange-600 mb-4"><i class="fas fa-terminal mr-2"></i>Commandes
+                        essentielles</h2>
+
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-gray-50 rounded-lg">
+                            <thead class="bg-orange-500 text-white">
+                                <tr>
+                                    <th class="p-3 text-left">Commande</th>
+                                    <th class="p-3 text-left">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">dirb http://site.com</td>
+                                    <td class="p-3">Scan de base avec la wordlist par défaut</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">dirb http://site.com
+                                        /usr/share/wordlists/dirb/common.txt</td>
+                                    <td class="p-3">Avec une wordlist spécifique</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">dirb http://site.com -X .php,.bak</td>
+                                    <td class="p-3">Recherche avec extensions spécifiques</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">dirb http://site.com -N 302</td>
+                                    <td class="p-3">Ignore les redirections (code 302)</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="p-3 font-mono bg-gray-100">dirb http://site.com -u admin:password</td>
+                                    <td class="p-3">Authentification basique</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+
+                <div class="mt-6">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-cogs mr-2 text-blue-600"></i>Options Clés
+                    </h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                        <!-- FILTRAGE -->
+                        <div class="bg-white p-4 rounded-xl shadow border border-blue-100">
+                            <h3 class="text-xl font-semibold text-blue-600 mb-2">🎯 Filtrage</h3>
+                            <ul class="list-disc list-inside text-gray-800 space-y-2">
+                                <li>
+                                    <code class="bg-gray-100 px-1 rounded">-x .php,.html</code>
+                                    → Recherche uniquement les fichiers avec ces extensions.
+                                    <br><span class="text-sm text-gray-600">Ex : <code>/login.php</code>,
+                                        <code>/index.html</code></span>
+                                </li>
+                                <li>
+                                    <code class="bg-gray-100 px-1 rounded">--hc 404</code>
+                                    → Ignore les pages 404 (non trouvées).
+                                    <br><span class="text-sm text-gray-600">Ex : Ne montre pas les erreurs, seulement
+                                        les vrais fichiers</span>
+                                </li>
+                                <li>
+                                    <code class="bg-gray-100 px-1 rounded">--mc 200</code>
+                                    → Affiche uniquement les réponses HTTP 200 (OK).
+                                    <br><span class="text-sm text-gray-600">Ex : Pages valides uniquement</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- PERFORMANCE -->
+                        <div class="bg-white p-4 rounded-xl shadow border border-green-100">
+                            <h3 class="text-xl font-semibold text-green-600 mb-2">⚡ Performance</h3>
+                            <ul class="list-disc list-inside text-gray-800 space-y-2">
+                                <li>
+                                    <code class="bg-gray-100 px-1 rounded">-t 50</code>
+                                    → Lance 50 threads pour un scan plus rapide.
+                                    <br><span class="text-sm text-gray-600">⚠️ Plus de threads = plus rapide, mais plus
+                                        bruyant !</span>
+                                </li>
+                                <li>
+                                    <code class="bg-gray-100 px-1 rounded">-z 100ms</code>
+                                    → Attente de 100 millisecondes entre les requêtes.
+                                    <br><span class="text-sm text-gray-600">Permet de ne pas surcharger le
+                                        serveur</span>
+                                </li>
+                                <li>
+                                    <code class="bg-gray-100 px-1 rounded">-r</code>
+                                    → Désactive la récursivité.
+                                    <br><span class="text-sm text-gray-600">Utile si tu ne veux pas scanner les
+                                        sous-dossiers trouvés</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- SECURITE -->
+                        <div class="bg-white p-4 rounded-xl shadow border border-red-100">
+                            <h3 class="text-xl font-semibold text-red-600 mb-2">🔐 Sécurité & Authentification</h3>
+                            <ul class="list-disc list-inside text-gray-800 space-y-2">
+                                <li>
+                                    <code class="bg-gray-100 px-1 rounded">-u admin:admin</code>
+                                    → Authentification HTTP basique (login:password).
+                                    <br><span class="text-sm text-gray-600">Ex : pour accéder à des zones
+                                        protégées</span>
+                                </li>
+                                <li>
+                                    <code class="bg-gray-100 px-1 rounded">-H "User-Agent: Mozilla"</code>
+                                    → Envoie un en-tête HTTP personnalisé.
+                                    <br><span class="text-sm text-gray-600">Ex : simuler un navigateur</span>
+                                </li>
+                                <li>
+                                    <code class="bg-gray-100 px-1 rounded">-p http://127.0.0.1:8080</code>
+                                    → Utilise un proxy (ex : Burp Suite)
+                                    <br><span class="text-sm text-gray-600">🔍 Pour analyser les requêtes dans un
+                                        proxy</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- SORTIE -->
+                        <div class="bg-white p-4 rounded-xl shadow border border-yellow-100">
+                            <h3 class="text-xl font-semibold text-yellow-600 mb-2">📦 Sortie & Affichage</h3>
+                            <ul class="list-disc list-inside text-gray-800 space-y-2">
+                                <li>
+                                    <code class="bg-gray-100 px-1 rounded">-o result.txt</code>
+                                    → Sauvegarde les résultats dans un fichier.
+                                    <br><span class="text-sm text-gray-600">Ex : Pour les relire plus tard</span>
+                                </li>
+                                <li>
+                                    <code class="bg-gray-100 px-1 rounded">-v</code>
+                                    → Affiche les détails en temps réel (mode verbeux).
+                                    <br><span class="text-sm text-gray-600">Utile pour voir la progression du
+                                        scan</span>
+                                </li>
+                                <li>
+                                    <code class="bg-gray-100 px-1 rounded">-s</code>
+                                    → Mode silencieux : affiche seulement les résultats positifs.
+                                    <br><span class="text-sm text-gray-600">Pour un affichage plus propre</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+        <!-- Features Section -->
+        <section class="bg-white rounded-lg shadow-md mb-6 overflow-hidden">
+             <button onclick="toggleCollapse('burpIntro')" class="w-full text-left p-6">
+                <h2 class="text-2xl font-bold text-orange-600 flex justify-between items-center">
+                    <h1 class="text-3xl font-bold"><i class="fas fa-bug text-3xl mr-3"></i>Burp Suite</h1>
+                    <p class="mt-2">Suite complète pour les tests de sécurité web : interception, scan, fuzzing, et plus encore</p>
+                </h2>
+            </button>
+
+           <div id="burpIntro" class="collapse-content px-6 pb-6">
+                <!-- Proxy -->
+                <div
+                    class="tool-card bg-white border border-gray-200 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+                    <div class="text-indigo-600 text-3xl mb-3">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Proxy Intercept</h3>
+                    <p class="text-gray-600 mb-3">
+                        Sert à intercepter et modifier les requêtes HTTP/HTTPS en temps réel entre votre navigateur et
+                        le serveur.
+                        C'est le point d'entrée de la plupart des tests.
+                    </p>
+                    <ul class="list-disc pl-5 text-sm text-gray-700 mb-3">
+                        <li>Analyse des headers, cookies, et paramètres GET/POST</li>
+                        <li>Inspection fine de l’application (auth, tokens, injection...)</li>
+                        <li>Essentiel pour du pentest en boîte noire</li>
+                    </ul>
+                    <div class="bg-indigo-50 text-indigo-800 text-sm px-3 py-1 rounded-full inline-block">
+                        <i class="fas fa-eye mr-1"></i> Contrôle total des échanges
+                    </div>
+                </div>
+
+                <!-- Scanner -->
+                <div
+                    class="tool-card bg-white border border-gray-200 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+                    <div class="text-red-500 text-3xl mb-3">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Scanner de Vulnérabilités</h3>
+                    <p class="text-gray-600 mb-3">
+                        Analyse automatiquement les failles les plus courantes sur vos cibles (XSS, SQLi, CSRF...).
+                    </p>
+                    <ul class="list-disc pl-5 text-sm text-gray-700 mb-3">
+                        <li>Scan actif et passif</li>
+                        <li>Rapports détaillés avec CVSS</li>
+                        <li>Exploits reproductibles</li>
+                    </ul>
+                    <div class="bg-red-50 text-red-800 text-sm px-3 py-1 rounded-full inline-block">
+                        <i class="fas fa-bolt mr-1"></i> Disponible uniquement en version Pro
+                    </div>
+                </div>
+
+                <!-- Intruder -->
+                <div
+                    class="tool-card bg-white border border-gray-200 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+                    <div class="text-purple-600 text-3xl mb-3">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Intruder</h3>
+                    <p class="text-gray-600 mb-3">
+                        Permet de lancer des attaques automatisées en injectant des charges utiles (payloads) dans des
+                        points de test.
+                    </p>
+                    <ul class="list-disc pl-5 text-sm text-gray-700 mb-3">
+                        <li>Test de force brute sur login ou tokens</li>
+                        <li>Fuzzing d’entrées utilisateur</li>
+                        <li>4 modes d’attaque : Sniper, Battering ram, Pitchfork, Cluster bomb</li>
+                    </ul>
+                    <div class="bg-purple-50 text-purple-800 text-sm px-3 py-1 rounded-full inline-block">
+                        <i class="fas fa-cog mr-1"></i> Automatisation ciblée des attaques
+                    </div>
+                </div>
+
+                <!-- Repeater -->
+                <div
+                    class="tool-card bg-white border border-gray-200 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+                    <div class="text-green-600 text-3xl mb-3">
+                        <i class="fas fa-redo"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Repeater</h3>
+                    <p class="text-gray-600 mb-3">
+                        Outil pour rejouer manuellement des requêtes HTTP avec des modifications, utile pour tester des
+                        hypothèses ou des injections.
+                    </p>
+                    <ul class="list-disc pl-5 text-sm text-gray-700 mb-3">
+                        <li>Analyse fine des réponses</li>
+                        <li>Comparaison de résultats avec variations</li>
+                        <li>Support des cookies et sessions</li>
+                    </ul>
+                    <div class="bg-green-50 text-green-800 text-sm px-3 py-1 rounded-full inline-block">
+                        <i class="fas fa-code mr-1"></i> Fuzzing manuel avancé
+                    </div>
+                </div>
+
+                <!-- Decoder -->
+                <div
+                    class="tool-card bg-white border border-gray-200 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+                    <div class="text-yellow-600 text-3xl mb-3">
+                        <i class="fas fa-lock-open"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Decoder</h3>
+                    <p class="text-gray-600 mb-3">
+                        Utilisé pour convertir des données encodées dans divers formats (Base64, URL, HTML, Hex...) à
+                        des fins de test ou de compréhension.
+                    </p>
+                    <ul class="list-disc pl-5 text-sm text-gray-700 mb-3">
+                        <li>Décode et encode les payloads</li>
+                        <li>Transformation rapide de contenu suspect</li>
+                        <li>Utile pour l’analyse de JWT, cookies, etc.</li>
+                    </ul>
+                    <div class="bg-yellow-50 text-yellow-800 text-sm px-3 py-1 rounded-full inline-block">
+                        <i class="fas fa-exchange-alt mr-1"></i> Pratique pour la rétro-ingénierie
+                    </div>
+                </div>
+
+                <!-- Extensions -->
+                <div
+                    class="tool-card bg-white border border-gray-200 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+                    <div class="text-blue-500 text-3xl mb-3">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Extensions (BApp Store)</h3>
+                    <p class="text-gray-600 mb-3">
+                        Burp Suite est extensible grâce à une bibliothèque d’extensions créées par la communauté ou par
+                        PortSwigger.
+                    </p>
+                    <ul class="list-disc pl-5 text-sm text-gray-700 mb-3">
+                        <li>Ajout de nouvelles fonctionnalités</li>
+                        <li>Scripts personnalisés en Python, Java, Ruby</li>
+                        <li>Exemples : Autorize, Logger++, Retire.js</li>
+                    </ul>
+                    <div class="bg-blue-50 text-blue-800 text-sm px-3 py-1 rounded-full inline-block">
+                        <i class="fab fa-python mr-1"></i> Compatible Python/Java
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <script>
+        function toggleCollapse(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById(id + 'Icon');
+
+            content.classList.toggle('show');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
+    </script>
+</body>
+
+</html>

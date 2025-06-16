@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cryptography</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <header class="bg-blue-600 text-white p-6 text-center">
+    <h1 class="text-3xl font-bold">Cryptographie</h1>
+    <p class="text-lg mt-2">Une explication simple pour débutants</p>
+  </header>
+
+  <main class="p-8 max-w-5xl mx-auto">
+
+    <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow mt-6">
+      <h2 class="text-2xl font-bold text-center text-blue-700 mb-4">🛡️ Introduction à la Cryptographie</h2>
+
+      <p class="text-gray-800 text-base leading-relaxed">
+        La <strong>cryptographie</strong>, c’est simplement l’art de cacher un message pour que seules les personnes
+        autorisées puissent le lire.
+        On transforme un <span class="text-blue-600 font-medium">texte clair</span> (appelé <em>plaintext</em>) en un
+        <span class="text-purple-600 font-medium">texte codé et illisible</span> (appelé <em>ciphertext</em>) grâce à
+        des méthodes mathématiques appelées <strong>algorithmes</strong>, souvent accompagnées d’une <strong>clé
+          secrète</strong>.
+      </p>
+
+      <p class="mt-4 text-gray-800 text-base leading-relaxed">
+        Cela permet de <span class="font-semibold text-green-700">protéger les informations</span>, que ce soit un
+        message, un fichier ou une communication, contre les <span class="text-red-600 font-medium">regards
+          indiscrets</span> ou les <span class="text-red-600 font-medium">modifications non autorisées</span>.
+      </p>
+
+      <div class="mt-6 p-4 bg-blue-50 border-l-4 border-blue-400 text-blue-800 text-sm rounded">
+        📌 Exemple : Si tu envoies un message secret à un ami, la cryptographie s’assure que seul ton ami, qui a la
+        bonne clé, pourra le lire.
+      </div>
+    </div>
+
+
+    <h1 class="text-3xl font-bold mb-6 text-center mt-8">Normes de Protection des Données</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- RGPD -->
+      <div class="bg-white shadow-md rounded-2xl p-6">
+        <h2 class="text-xl font-semibold mb-2">🇪🇺 RGPD</h2>
+        <ul class="list-disc list-inside space-y-1">
+          <li>Protection des données personnelles (UE).</li>
+          <li>Consentement, droit à l'oubli, notification des fuites.</li>
+          <li>Privacy by Design & by Default.</li>
+        </ul>
+      </div>
+
+      <!-- HITECH -->
+      <div class="bg-white shadow-md rounded-2xl p-6">
+        <h2 class="text-xl font-semibold mb-2">🇺🇸 HITECH</h2>
+        <ul class="list-disc list-inside space-y-1">
+          <li>Sécurité des données de santé électroniques (USA).</li>
+          <li>Notifications en cas de fuite ePHI.</li>
+          <li>Complément à HIPAA.</li>
+        </ul>
+      </div>
+
+      <!-- DPA -->
+      <div class="bg-white shadow-md rounded-2xl p-6">
+        <h2 class="text-xl font-semibold mb-2">🇬🇧 DPA</h2>
+        <ul class="list-disc list-inside space-y-1">
+          <li>Loi britannique sur les données personnelles.</li>
+          <li>Complément du RGPD au Royaume-Uni.</li>
+          <li>Contrôle par l'ICO.</li>
+        </ul>
+      </div>
+
+      <!-- PCI DSS -->
+      <div class="bg-white shadow-md rounded-2xl p-6">
+        <h2 class="text-xl font-semibold mb-2">💳 PCI DSS</h2>
+        <ul class="list-disc list-inside space-y-1">
+          <li>Norme de sécurité pour les cartes de paiement.</li>
+          <li>Chiffrement, pare-feu, tests réguliers.</li>
+          <li>Obligatoire pour les commerçants.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Cryptographie complète -->
+    <div class="bg-white shadow-md rounded-2xl p-6 max-w-5xl mx-auto mt-8">
+      <h2 class="text-2xl font-bold mb-4">🔐 Cryptographie : du texte en clair au texte chiffré</h2>
+      <div class="space-y-4">
+        <p>Le passage de <strong>plaintext</strong> (texte en clair) à <strong>ciphertext</strong> (texte chiffré) est
+          le processus fondamental de la cryptographie appelé <strong>encryption</strong> (chiffrement). Voici comment
+          cela fonctionne :</p>
+
+        <p><strong>Plaintext</strong> est le message original, lisible et compréhensible, comme un texte, un fichier ou
+          toute donnée non protégée.</p>
+
+        <p>Pour protéger ce message, un algorithme de chiffrement <strong>(Cipher)</strong> utilise une clé secrète
+          <strong>(Key)</strong> (ou une paire de clés dans le
+          cas de la cryptographie asymétrique) pour transformer ce plaintext en ciphertext, une version codée illisible
+          sans la clé appropriée.
+        </p>
+
+        <p>Cette transformation s’appuie sur des opérations mathématiques complexes qui brouillent complètement le
+          contenu original, rendant le ciphertext apparemment aléatoire et incompréhensible pour toute personne ne
+          possédant pas la clé de déchiffrement.</p>
+
+        <p>Le ciphertext est ensuite transmis ou stocké de manière sécurisée.</p>
+
+        <p>Pour récupérer le message original, le destinataire utilise la clé de déchiffrement pour appliquer
+          l’opération inverse, appelée <strong>decryption</strong> (déchiffrement), qui convertit le ciphertext en
+          plaintext lisible.</p>
+
+        <p>Ce mécanisme garantit la confidentialité des données en empêchant toute personne non autorisée de comprendre
+          le contenu pendant la transmission ou le stockage.</p>
+      </div>
+
+      <hr class="my-6">
+
+      <h2 class="text-xl font-bold mb-2">🧠 Définitions</h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Cipher :</strong> Un <em>cipher</em> est un algorithme de chiffrement utilisé pour transformer un
+          texte lisible en texte chiffré. Exemples : AES, RSA, chiffre de César.</li>
+        <li><strong>Key :</strong> Une <em>clé</em> est une donnée secrète utilisée pour chiffrer ou déchiffrer les
+          messages. En cryptographie symétrique, la même clé est utilisée dans les deux sens. En cryptographie
+          asymétrique, deux clés sont utilisées (publique et privée).</li>
+      </ul>
+
+      <h3 class="text-lg font-semibold mt-6">🔒 Le Chiffrement de César</h3>
+
+      <div class="bg-gray-50 p-4 rounded shadow mt-4">
+        <p><strong>Le Chiffrement de César</strong> est l'un des plus anciens et des plus simples algorithmes de
+          chiffrement. Il porte ce nom en hommage à Jules César, qui l'aurait utilisé pour communiquer en toute sécurité
+          avec ses généraux. C'est un exemple de <em>chiffrement par substitution</em>, où chaque lettre du message est
+          remplacée par une autre lettre, à une position décalée dans l'alphabet.</p>
+      </div>
+
+      <h4 class="text-md font-semibold mt-4">📚 Comment ça fonctionne ?</h4>
+
+      <div class="bg-gray-50 p-4 rounded shadow mt-2">
+        <p>Le chiffrement fonctionne comme suit :</p>
+        <ul class="list-inside list-disc mt-2">
+          <li><strong>Plaintext</strong>: Le message original que l'on souhaite protéger.</li>
+          <li><strong>Clé</strong>: Un nombre déterminant le décalage des lettres dans l'alphabet.</li>
+          <li><strong>Ciphertext</strong>: Le message chiffré, où chaque lettre du texte en clair a été décalée selon la
+            clé.</li>
+        </ul>
+        <p><strong>Exemple :</strong> Prenons le mot <code>"HELLO"</code> avec une clé de <strong>3</strong> (décalage
+          de 3 lettres).</p>
+        <ul class="list-inside list-disc mt-2">
+          <li><strong>H</strong> devient <strong>K</strong></li>
+          <li><strong>E</strong> devient <strong>H</strong></li>
+          <li><strong>L</strong> devient <strong>O</strong></li>
+          <li><strong>L</strong> devient <strong>O</strong></li>
+          <li><strong>O</strong> devient <strong>R</strong></li>
+        </ul>
+        <p>Le texte chiffré serait donc <strong>"KHOOR"</strong>.</p>
+      </div>
+
+      <h4 class="text-md font-semibold mt-4">🔢 Pourquoi 25 possibilités ?</h4>
+
+      <div class="bg-gray-50 p-4 rounded shadow mt-2">
+        <p>Il y a 26 lettres dans l'alphabet, donc chaque lettre peut être décalée d'un certain nombre de positions.
+          Cependant, un décalage de <strong>0</strong> n'aurait aucun effet, et un décalage de <strong>26</strong>
+          ramènerait chaque lettre à sa position d'origine. Ainsi, il y a <strong>25 décalages possibles</strong> pour
+          chaque lettre.</p>
+        <p><strong>Exemple :</strong> Voici les résultats pour le texte <code>"KHOOR"</code> avec les 25 clés possibles
+          :</p>
+
+        <table class="table-auto mt-2 w-full border border-gray-300">
+          <thead>
+            <tr>
+              <th class="border px-4 py-2">Clé</th>
+              <th class="border px-4 py-2">Texte déchiffré</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border px-4 py-2">1</td>
+              <td class="border px-4 py-2">JGNNN</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">2</td>
+              <td class="border px-4 py-2">IFMMN</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">3</td>
+              <td class="border px-4 py-2">HELLO</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">4</td>
+              <td class="border px-4 py-2">GDKKN</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">5</td>
+              <td class="border px-4 py-2">FCJJM</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">6</td>
+              <td class="border px-4 py-2">EBIIL</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">7</td>
+              <td class="border px-4 py-2">DAHHK</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">8</td>
+              <td class="border px-4 py-2">CZGGJ</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">9</td>
+              <td class="border px-4 py-2">BYFFI</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">10</td>
+              <td class="border px-4 py-2">AXEEH</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">11</td>
+              <td class="border px-4 py-2">ZWDDG</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">12</td>
+              <td class="border px-4 py-2">YVCCF</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">13</td>
+              <td class="border px-4 py-2">XUBBE</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">14</td>
+              <td class="border px-4 py-2">WTAAD</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">15</td>
+              <td class="border px-4 py-2">VSZZC</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">16</td>
+              <td class="border px-4 py-2">URYYB</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">17</td>
+              <td class="border px-4 py-2">TQXXA</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">18</td>
+              <td class="border px-4 py-2">SPWWZ</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">19</td>
+              <td class="border px-4 py-2">ROVVY</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">20</td>
+              <td class="border px-4 py-2">QNUUX</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">21</td>
+              <td class="border px-4 py-2">PMPWT</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">22</td>
+              <td class="border px-4 py-2">OLOVS</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">23</td>
+              <td class="border px-4 py-2">NKNUR</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">24</td>
+              <td class="border px-4 py-2">MJMTQ</td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">25</td>
+              <td class="border px-4 py-2">LILSZ</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Comme tu peux le voir, avec un décalage de <strong>3</strong>, tu obtiens le texte original :
+          <strong>"HELLO"</strong>.
+        </p>
+      </div>
+
+      <h4 class="text-md font-semibold mt-4">🛡️ Pourquoi est-ce important ?</h4>
+
+      <div class="bg-gray-50 p-4 rounded shadow mt-2">
+        <p>Le chiffrement de César est une méthode très simple, mais elle est facilement vulnérable à la cryptanalyse
+          (l'art de casser les codes). Le fait qu'il y ait seulement 25 décalages possibles le rend facilement cassable
+          par une attaque par force brute.</p>
+        <p>En effet, il suffit d'essayer toutes les possibilités (les 25 décalages) pour récupérer le texte original. De
+          nos jours, ce chiffrement n'offre aucune sécurité et est surtout utilisé à des fins pédagogiques ou dans des
+          jeux.</p>
+      </div>
+
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+        <!-- Chiffrement (droite) -->
+        <div class="bg-gray-50 p-4 rounded shadow">
+          <label class="block mb-2 font-medium">🔐 Texte à chiffrer :</label>
+          <input type="text" id="plainText" class="w-full p-2 border rounded mb-3" placeholder="Entrez un texte">
+
+          <label class="block mb-2 font-medium">Clé (décalage) :</label>
+          <input type="number" id="key" class="w-full p-2 border rounded mb-3" value="3">
+
+          <div class="flex space-x-2">
+            <button onclick="encryptCaesar()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+              Chiffrer
+            </button>
+          </div>
+
+          <p class="mt-4"><strong>Résultat :</strong> <span id="cipherResult" class="font-mono text-blue-800"></span>
+          </p>
+        </div>
+
+        <!-- Déchiffrement (gauche) -->
+        <div class="bg-gray-50 p-4 rounded shadow">
+          <label class="block mb-2 font-medium">🔓 Texte chiffré à décrypter :</label>
+          <input type="text" id="cipherInput" class="w-full p-2 border rounded mb-3"
+            placeholder="Entrez un texte chiffré">
+
+          <button onclick="bruteForceDecrypt()" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
+            Déchiffrer (toutes les clés)
+          </button>
+
+          <div class="mt-4 space-y-2">
+            <p class="font-bold">Résultats pour chaque clé :</p>
+            <ul id="bruteForceResults" class="list-disc list-inside text-sm text-gray-700"></ul>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+
+    <div class="max-w-5xl mx-auto p-6 bg-white rounded-lg shadow mt-8">
+      <h2 class="text-2xl font-bold mb-4 text-center">🔐 Cryptographie Symétrique vs Asymétrique</h2>
+
+      <p class="mb-4">
+        La cryptographie symétrique et asymétrique sont deux méthodes fondamentales pour sécuriser les données, qui
+        diffèrent principalement par la gestion des clés utilisées pour chiffrer et déchiffrer les informations.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Symmetric -->
+        <div class="bg-blue-50 p-4 rounded-lg">
+          <h3 class="text-xl font-semibold mb-2">🔑 Cryptographie Symétrique</h3>
+          <ul class="list-disc list-inside text-sm space-y-1">
+            <li>Utilise une seule clé secrète partagée pour chiffrer et déchiffrer.</li>
+            <li>Problème de distribution sécurisé de la clé.</li>
+            <li>Rapide et efficace pour gros volumes de données.</li>
+            <li>Algorithmes : AES, DES, Blowfish.</li>
+            <li>Usage : fichiers, bases de données, réseaux internes.</li>
+          </ul>
+        </div>
+
+        <!-- Asymmetric -->
+        <div class="bg-green-50 p-4 rounded-lg">
+          <h3 class="text-xl font-semibold mb-2">🔓 Cryptographie Asymétrique</h3>
+          <ul class="list-disc list-inside text-sm space-y-1">
+            <li>Utilise une paire : clé publique (chiffrement), clé privée (déchiffrement).</li>
+            <li>La clé publique peut être librement partagée.</li>
+            <li>Plus lente mais plus sécurisée sur les réseaux ouverts.</li>
+            <li>Algorithmes : RSA, ECC, DSA.</li>
+            <li>Usage : SSL/TLS, signatures numériques, e-mails sécurisés.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Comparative Table -->
+      <div class="mt-6">
+        <h3 class="text-lg font-bold mb-2">📊 Comparaison Synthétique</h3>
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm text-left border border-gray-200">
+            <thead class="bg-gray-100 font-semibold">
+              <tr>
+                <th class="px-4 py-2 border">Aspect</th>
+                <th class="px-4 py-2 border">Symétrique</th>
+                <th class="px-4 py-2 border">Asymétrique</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="px-4 py-2 border">Clés utilisées</td>
+                <td class="px-4 py-2 border">Une seule clé secrète</td>
+                <td class="px-4 py-2 border">Clé publique / Clé privée</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">Distribution des clés</td>
+                <td class="px-4 py-2 border">Doit être sécurisée</td>
+                <td class="px-4 py-2 border">Clé publique libre</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">Vitesse</td>
+                <td class="px-4 py-2 border">Rapide</td>
+                <td class="px-4 py-2 border">Plus lente</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">Sécurité</td>
+                <td class="px-4 py-2 border">Bonne en environnement fermé</td>
+                <td class="px-4 py-2 border">Adaptée aux réseaux ouverts</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">Exemples</td>
+                <td class="px-4 py-2 border">AES, DES, Blowfish</td>
+                <td class="px-4 py-2 border">RSA, ECC, DSA</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">Cas d'utilisation</td>
+                <td class="px-4 py-2 border">Stockage, données internes</td>
+                <td class="px-4 py-2 border">Échanges sécurisés, signatures</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="max-w-5xl mx-auto p-6 mt-10 bg-white shadow-xl rounded-2xl">
+      <h1 class="text-3xl font-bold mb-4 text-blue-600 text-center">🔐 Le Hashage expliqué simplement</h1>
+
+      <p class="mb-4 text-lg">
+        Le <strong>hashage</strong>, en informatique, est une technique qui permet de transformer une information (comme
+        un mot de passe ou un texte) en une série fixe de lettres et de chiffres. On appelle ça une
+        <strong>empreinte</strong> ou un <strong>hash</strong>.
+      </p>
+
+      <h2 class="text-xl font-semibold text-blue-500 mb-2">📌 Exemple simple :</h2>
+      <p class="mb-4">
+        Si tu écris <code class="bg-gray-200 px-1 rounded">bonjour</code>, après hashage, tu obtiens quelque chose comme
+        :<br />
+        <code class="bg-gray-100 block p-2 rounded text-sm">aeb6b9e7c2d5f45aaf9a302c6c52b8dc</code>
+        <span class="text-gray-500 text-sm italic">(ceci dépend de la fonction utilisée)</span>
+      </p>
+
+      <h2 class="text-xl font-semibold text-blue-500 mb-2">🎯 Pourquoi c’est utile ?</h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>✔️ Pour <strong>protéger les mots de passe</strong> dans les bases de données.</li>
+        <li>✔️ Pour <strong>vérifier l’intégrité</strong> d’un fichier (savoir s’il a été modifié).</li>
+        <li>✔️ Pour <strong>signer numériquement</strong> des données.</li>
+      </ul>
+  
+    </div>
+
+
+
+
+  </main>
+
+
+
+  <script>
+    function encryptCaesar() {
+      const input = document.getElementById("plainText").value.toUpperCase();
+      const key = parseInt(document.getElementById("key").value);
+      let result = "";
+
+      for (let i = 0; i < input.length; i++) {
+        let char = input[i];
+        if (char.match(/[A-Z]/)) {
+          let code = ((char.charCodeAt(0) - 65 + key) % 26) + 65;
+          result += String.fromCharCode(code);
+        } else {
+          result += char;
+        }
+      }
+
+      document.getElementById("cipherResult").textContent = result;
+    }
+
+  </script>
+  <script>
+    function bruteForceDecrypt() {
+      const input = document.getElementById("cipherInput").value.toUpperCase();
+      const resultsContainer = document.getElementById("bruteForceResults");
+      resultsContainer.innerHTML = ""; // Clear previous results
+
+      for (let key = 1; key < 26; key++) {
+        let result = "";
+
+        for (let i = 0; i < input.length; i++) {
+          let char = input[i];
+          if (char.match(/[A-Z]/)) {
+            let code = ((char.charCodeAt(0) - 65 - key + 26) % 26) + 65;
+            result += String.fromCharCode(code);
+          } else {
+            result += char;
+          }
+        }
+
+        const listItem = document.createElement("li");
+        listItem.textContent = `Clé ${key} : ${result}`;
+        resultsContainer.appendChild(listItem);
+      }
+    }
+  </script>
+
+</body>
+
+</html>

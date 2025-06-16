@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analyse avec theHarvester</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <div class="max-w-4xl mx-auto p-6">
+      <header class="mb-8">
+        <h1 class="text-3xl font-bold text-purple-600">Utilisation de theHarvester</h1>
+        <p class="text-gray-600">Commande : <code>theHarvester -d demo-vulnerable.com -b google -l 100</code></p>
+      </header>
+
+      <!-- Section: Introduction -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">Qu'est-ce que theHarvester ?</h2>
+        <p>
+          <strong>theHarvester</strong> est un outil de reconnaissance passive très utilisé en phase initiale de test d'intrusion. Il permet de récolter des informations publiques sur un domaine cible comme des adresses email, des noms d'utilisateur, des sous-domaines ou encore des adresses IP.
+        </p>
+      </section>
+
+      <!-- Section: Commande utilisée -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">Commande analysée</h2>
+        <pre class="bg-gray-200 p-3 rounded">
+theHarvester -d demo-vulnerable.com -b google -l 100
+        </pre>
+        <p class="mt-4">Détail des options utilisées :</p>
+        <ul class="list-disc list-inside">
+          <li><code>-d</code> : spécifie le <strong>domaine</strong> cible à analyser (<code>demo-vulnerable.com</code>).</li>
+          <li><code>-b</code> : définit le <strong>moteur de recherche</strong> utilisé pour collecter les données (ici <code>google</code>).</li>
+          <li><code>-l</code> : limite le nombre de résultats retournés (ici, 100).</li>
+        </ul>
+      </section>
+
+      <!-- Section: Exemple de résultat -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">Exemple de Résultat</h2>
+        <p>Après exécution, on peut obtenir des informations comme :</p>
+        <pre class="bg-gray-200 p-3 rounded text-sm overflow-x-auto">
+[-] Emails found:
+  - contact@demo-vulnerable.com
+  - admin@demo-vulnerable.com
+  - hr@demo-vulnerable.com
+
+[-] Hosts found:
+  - www.demo-vulnerable.com
+  - dev.demo-vulnerable.com
+  - mail.demo-vulnerable.com
+        </pre>
+        <p class="mt-4">
+          Ces résultats sont précieux pour cibler de futurs vecteurs d'attaque comme :
+        </p>
+        <ul class="list-disc list-inside">
+          <li>Campagnes de phishing ciblées avec les emails récoltés.</li>
+          <li>Recherche de services ou applications hébergées sur les sous-domaines trouvés.</li>
+          <li>Reconnaissance approfondie sur les serveurs de messagerie.</li>
+        </ul>
+      </section>
+
+      <!-- Section: Quand utiliser cet outil ? -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">Pourquoi utiliser theHarvester ?</h2>
+        <ul class="list-disc list-inside">
+          <li>Collecte rapide d'informations publiques pour éviter d'éveiller les soupçons (mode passif).</li>
+          <li>Utile pour préparer une phase d'ingénierie sociale ou pour repérer des services en ligne oubliés.</li>
+          <li>Supporte de nombreuses sources de données : Google, Bing, Yahoo, Baidu, LinkedIn, GitHub, etc.</li>
+        </ul>
+      </section>
+
+      <!-- Section: Bonnes pratiques -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">Bonnes pratiques et conseils</h2>
+        <ul class="list-disc list-inside">
+          <li>Tester plusieurs moteurs de recherche pour diversifier les résultats : <code>-b bing</code>, <code>-b linkedin</code>, etc.</li>
+          <li>Exporter les résultats avec <code>-f html</code> pour les lire plus facilement :</li>
+        </ul>
+        <pre class="bg-gray-200 p-3 rounded">
+theHarvester -d demo-vulnerable.com -b google -l 100 -f resultat.html
+        </pre>
+        <ul class="list-disc list-inside mt-4">
+          <li>Comparer les résultats avec ceux d'autres outils comme <code>Amass</code> ou <code>Recon-ng</code>.</li>
+        </ul>
+      </section>
+
+      <!-- Section: Conclusion -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">Conclusion</h2>
+        <p>
+          theHarvester est un excellent outil pour enrichir la phase de collecte d’informations lors d’un test d’intrusion. Facile à utiliser, il permet de découvrir rapidement des éléments critiques sur la cible à partir de sources publiques. Une bonne utilisation de cet outil permet d’anticiper les vecteurs d’attaque avec précision.
+        </p>
+      </section>
+
+      <footer class="text-center text-sm text-gray-500 mt-8">
+        Rapport généré par PentestGPT · 2025
+      </footer>
+    </div>
+  </body>
+</html>

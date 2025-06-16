@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Dorking - Recherche Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <div class="max-w-4xl mx-auto p-6">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold text-red-600">Google Dorking : Trouver les pages Admin</h1>
+      <p class="text-gray-600">Requête utilisée : <code>inurl:admin site:demo-vulnerable.com</code></p>
+    </header>
+
+    <!-- Section: Introduction -->
+    <section class="bg-white rounded-xl shadow p-6 mb-6">
+      <h2 class="text-2xl font-semibold mb-2">Qu'est-ce que le Google Dorking ?</h2>
+      <p>
+        Le <strong>Google Dorking</strong> (aussi appelé Google Hacking) est une méthode de recherche avancée qui utilise des opérateurs spécifiques dans Google pour trouver des informations sensibles ou cachées publiquement sur le web. Cette technique est très utilisée dans la phase de <strong>reconnaissance passive</strong> lors d’un test d’intrusion.
+      </p>
+    </section>
+
+    <!-- Section: Détail de la commande -->
+    <section class="bg-white rounded-xl shadow p-6 mb-6">
+      <h2 class="text-2xl font-semibold mb-2">Décomposition de la commande</h2>
+      <pre class="bg-gray-200 p-3 rounded">
+inurl:admin site:demo-vulnerable.com
+      </pre>
+      <ul class="list-disc list-inside mt-4">
+        <li><code>inurl:admin</code> : recherche dans les URLs contenant le mot <strong>"admin"</strong> (ex: /admin/, /admin-login.php, etc.).</li>
+        <li><code>site:demo-vulnerable.com</code> : limite la recherche au <strong>site spécifique</strong> ciblé.</li>
+      </ul>
+    </section>
+
+    <!-- Section: Exemple de résultat -->
+    <section class="bg-white rounded-xl shadow p-6 mb-6">
+      <h2 class="text-2xl font-semibold mb-2">Exemples de résultats trouvés</h2>
+      <ul class="list-disc list-inside">
+        <li>http://demo-vulnerable.com/admin/</li>
+        <li>http://demo-vulnerable.com/admin-login.php</li>
+        <li>http://demo-vulnerable.com/site/admin_panel/</li>
+      </ul>
+      <p class="mt-4">
+        Ces pages peuvent pointer vers des <strong>interfaces de connexion</strong> d'administration potentiellement vulnérables (injection SQL, accès non protégé, etc.).
+      </p>
+    </section>
+
+    <!-- Section: Pourquoi utiliser cette technique -->
+    <section class="bg-white rounded-xl shadow p-6 mb-6">
+      <h2 class="text-2xl font-semibold mb-2">Pourquoi utiliser cette méthode ?</h2>
+      <ul class="list-disc list-inside">
+        <li>Détecter rapidement des interfaces d'administration accessibles publiquement.</li>
+        <li>Rester en mode <strong>passif</strong> (aucun scan direct sur la cible).</li>
+        <li>Collecter des URL intéressantes à tester avec des outils comme Burp Suite ou SQLMap.</li>
+      </ul>
+    </section>
+
+    <!-- Section: Bonnes pratiques -->
+    <section class="bg-white rounded-xl shadow p-6 mb-6">
+      <h2 class="text-2xl font-semibold mb-2">Autres Dorks utiles</h2>
+      <ul class="list-disc list-inside">
+        <li><code>intitle:"index of" site:demo-vulnerable.com</code> : recherche de répertoires ouverts.</li>
+        <li><code>filetype:sql site:demo-vulnerable.com</code> : fichiers de bases de données exposés.</li>
+        <li><code>intext:"password" site:demo-vulnerable.com</code> : mots de passe visibles dans des pages ou fichiers.</li>
+      </ul>
+    </section>
+
+    <!-- Section: Risques pour les entreprises -->
+    <section class="bg-white rounded-xl shadow p-6 mb-6">
+      <h2 class="text-2xl font-semibold mb-2">Pourquoi c'est un risque pour l'entreprise ?</h2>
+      <p>
+        Beaucoup de sites web indexent par erreur des URLs sensibles ou fichiers de configuration. Les moteurs de recherche les rendent accessibles publiquement si les règles de sécurité ne sont pas correctement configurées.
+      </p>
+      <ul class="list-disc list-inside mt-2">
+        <li>Oubli de fichiers de backup sur le serveur.</li>
+        <li>Mauvais paramétrage du fichier <code>robots.txt</code>.</li>
+        <li>Pas d’authentification sur des interfaces critiques.</li>
+      </ul>
+    </section>
+
+    <!-- Section: Solutions -->
+    <section class="bg-white rounded-xl shadow p-6 mb-6">
+      <h2 class="text-2xl font-semibold mb-2">Comment se protéger ?</h2>
+      <ul class="list-disc list-inside">
+        <li>Configurer le fichier <code>robots.txt</code> pour interdire l’indexation de certains répertoires.</li>
+        <li>Appliquer des règles d’accès avec authentification forte sur les pages sensibles.</li>
+        <li>Utiliser un WAF (Web Application Firewall) pour filtrer les accès.</li>
+        <li>Surveiller régulièrement ce qui est indexé par Google avec : <code>site:example.com</code></li>
+      </ul>
+    </section>
+
+    <footer class="text-center text-sm text-gray-500 mt-8">
+      Page générée par PentestGPT · 2025
+    </footer>
+  </div>
+</body>
+</html>
